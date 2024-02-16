@@ -1,8 +1,10 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         System.out.println("Hello! Welcome to Certificate Getter!");
 
         boolean running = true;
@@ -28,6 +30,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Option 2 selected");
+                    addCertficates();
                     break;
                 case 3:
                     System.out.println("Option 3 selected");
@@ -57,6 +60,21 @@ public class Main {
      * @return 
     */
     public static void addCertficates() {
+        String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
+        String username = "postgres";
+
+        // Get database password from user
+        Scanner scanner = new Scanner(System.in);
+        String password = scanner.nextLine();
+
+        try {
+            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            System.out.println("Connected to PostgreSQL");
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Error in connecting to PostgreSQL server");
+            e.printStackTrace();
+        }
     }
 
     /**
