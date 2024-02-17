@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Scanner;
 
 public class Main {
@@ -55,7 +56,7 @@ public class Main {
         return 1;
     }
 
-        /**
+    /**
      * 
      * @return 
     */
@@ -64,12 +65,21 @@ public class Main {
         String username = "postgres";
 
         // Get database password from user
+        System.out.println("Enter password:");
         Scanner scanner = new Scanner(System.in);
         String password = scanner.nextLine();
 
         try {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
             System.out.println("Connected to PostgreSQL");
+
+            String sql = "Insert INTO certificates (name)" + " VALUES('Test')";
+
+            Statement statement = connection.createStatement();
+            int rows = statement.executeUpdate(sql);
+            if(rows > 0) {
+                System.out.println("added");
+            }
             connection.close();
         } catch (SQLException e) {
             System.out.println("Error in connecting to PostgreSQL server");

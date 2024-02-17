@@ -9,13 +9,23 @@
 
 16/02/24
     Achievements:
-        Sucessfully created a database and table in pgadmin 4 (postgreSQL)
-        Sucessfully connected with database server from java
+        - Sucessfully created a database and table in pgadmin 4 (postgreSQL)
+        - Sucessfully connected with database server from java
     
-    Next steps:
+    To do:
         - Implement funtion to add data to a table in the database
         - Implement function to create a database
         - Implment another table
 
     Resources used:
         - https://www.youtube.com/watch?v=OLmAZmBSwMo
+
+17/02/24
+    Achievement:
+        - Sucessfully added data into database
+    
+    To do:
+        - Need to refind the function
+        - Implement funtion to add data to a table in the database
+        - Implement function to create a database
+        - Implment another table
