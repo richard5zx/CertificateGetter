@@ -92,6 +92,8 @@ public class Main {
     public static void deleteCertficates() {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
+
+        String password;
     }
 
     /**
@@ -113,10 +115,9 @@ public class Main {
     * @return 
     */
     public static String getPassword() {
-        System.out.println("Enter Database password");
+        System.out.print("Enter Database password: ");
         Scanner scanner = new Scanner(System.in);
         String password = scanner.nextLine();
-        scanner.close();
         return password;
     }
 }
