@@ -65,9 +65,7 @@ public class Main {
         String username = "postgres";
 
         // Get database password from user
-        System.out.println("Enter password:");
-        Scanner scanner = new Scanner(System.in);
-        String password = scanner.nextLine();
+        String password = getPassword();
 
         try {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
@@ -91,6 +89,34 @@ public class Main {
     * 
     * @return 
     */
-    public static void deleteNumberOfCertficates() {
+    public static void deleteCertficates() {
+        String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
+        String username = "postgres";
+    }
+
+    /**
+    * 
+    * @return 
+    */
+    public static void addDataToCertficate() {
+    }
+
+    /**
+    * 
+    * @return 
+    */
+    public static void deleteDataFromCertficate() {
+    }
+
+    /**
+    * 
+    * @return 
+    */
+    public static String getPassword() {
+        System.out.println("Enter Database password");
+        Scanner scanner = new Scanner(System.in);
+        String password = scanner.nextLine();
+        scanner.close();
+        return password;
     }
 }
