@@ -11,10 +11,19 @@ Blog
         - refactor code
             -  seperate functions in to different classes
         - add date created to certificates table
-        
+        - create list certificates function
+        - function to count number of certificates in table
+        - create another table to add data(questions for certificates)
+        - function to add and delete those questions to table
+
     Thoughts:
         - since I have to enter my password everytime, I wonder if i can implement something like SSO (Single Sign-on) to this project
-
+        - would be nice to make my program look nicer for example creating an User Interface (UI) or something with frontend
+        - i need to think about what the entry for questions look like:
+            - String - text
+            - List[String] - answer selections
+            - int - number of mistakes
+            - date added
 18/02/24
     Achievements:
         - reading password for database is used in a lot of the functions so created a seperate function to read in password
