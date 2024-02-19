@@ -31,10 +31,11 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Option 2 selected");
-                    addCertficates();
+                    addCertficates(scanner);
                     break;
                 case 3:
                     System.out.println("Option 3 selected");
+                    deleteCertficates(scanner);
                     break;
                 case 4:
                     System.out.println("Option 4 selected, Bye!");
@@ -60,23 +61,26 @@ public class Main {
      * 
      * @return 
     */
-    public static void addCertficates() {
+    public static void addCertficates(Scanner scanner) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
 
         // Get database password from user
-        String password = getPassword();
+        String password = getPassword(scanner);
 
         try {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
-            System.out.println("Connected to PostgreSQL");
+            System.out.println("Connected to database");
 
-            String sql = "Insert INTO certificates (name)" + " VALUES('Test')";
+            System.out.print("Enter name of new certificate: ");
+            String certificateName = scanner.nextLine();
 
+            String sql = "Insert INTO certificates (name)" + " VALUES('" + certificateName + "')";
+            
             Statement statement = connection.createStatement();
             int rows = statement.executeUpdate(sql);
             if(rows > 0) {
-                System.out.println("added");
+                 System.out.println(certificateName + " certificate added");
             }
             connection.close();
         } catch (SQLException e) {
@@ -89,11 +93,58 @@ public class Main {
     * 
     * @return 
     */
-    public static void deleteCertficates() {
+    public static void deleteCertficates(Scanner scanner) {
+        String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
+        String username = "postgres";
+        
+        String password = getPassword(scanner);
+        
+        // Function to show the lists of certificates
+
+        try {
+            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            System.out.println("Connected to database");
+
+            System.out.print("Select id of certificate you want to delete: ");
+            String id = scanner.nextLine();
+            String sql = "DELETE FROM certificates WHERE id=" + id;
+
+            Statement statement = connection.createStatement();
+            int rows = statement.executeUpdate(sql);
+            if(rows > 0) {
+                System.out.println("Certificate deleted");
+            }
+            connection.close();
+
+        } catch(SQLException e) {
+            System.out.println("Error in connecting to PostgreSQL server");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+    * 
+    * @return 
+    */
+    public static void listCertficate(Scanner scanner) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
 
-        String password;
+        String password = getPassword(scanner);
+        try {
+            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            System.out.println("Connected to database");
+            String sql = "";
+            Statement statement = connection.createStatement();
+            int rows = statement.executeUpdate(sql);
+            if(rows > 0) {
+                System.out.println("listed");
+            }
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("Error in connecting to PostgreSQL server");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -114,9 +165,8 @@ public class Main {
     * 
     * @return 
     */
-    public static String getPassword() {
+    public static String getPassword(Scanner scanner) {
         System.out.print("Enter Database password: ");
-        Scanner scanner = new Scanner(System.in);
         String password = scanner.nextLine();
         return password;
     }
