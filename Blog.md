@@ -1,5 +1,16 @@
 Blog
 
+20/02/24
+    Achievements:
+        - Refactored code seperate functions to different files using SRP (Single Responsibility Principle)
+        
+    To do:
+        - 
+
+    Thoughts:
+        - I think I should start to create objects instead of just using static functions for example I should be creating certificate objects
+        - I created an authentication file which could be used to write some authentication function later on
+
 19/02/24
     Achievements:
         - sucesfully deleted data from a table in database using java
