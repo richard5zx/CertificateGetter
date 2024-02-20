@@ -24,7 +24,7 @@ public class Main {
             switch(option) {
                 case 1:
                     System.out.println("Option 1 selected");
-                    System.out.println(Certificate.getNumberOfCertficates(scanner));
+                    System.out.println(Certificate.getNumOfCert(scanner));
                     break;
                 case 2:
                     System.out.println("Option 2 selected");

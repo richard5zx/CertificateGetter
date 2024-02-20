@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
@@ -9,7 +10,7 @@ public class Certificate {
      * @param Scanner
      * @return number of certificates in table 
     */
-    public static int getNumberOfCertficates(Scanner scanner) {
+    public static int getNumOfCert(Scanner scanner) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
 
@@ -20,10 +21,16 @@ public class Certificate {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
             System.out.println("Connected to database");
 
-            String sql = "SELECT COUNT(*)";
+            String sql = "SELECT COUNT(*) AS numOfCert FROM public.certificates";
 
             Statement statement = connection.createStatement();
 
+            ResultSet rset = statement.executeQuery(sql);
+
+            rset.next();
+            int numOfCert = rset.getInt("numOfCert");
+
+            return numOfCert; 
             
         } catch(Exception e) {
             System.out.println("Error in connecting to PostgreSQL server");

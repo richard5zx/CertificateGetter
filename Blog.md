@@ -3,6 +3,7 @@ Blog
 20/02/24
     Achievements:
         - Refactored code seperate functions to different files using SRP (Single Responsibility Principle)
+        - Get number of certificates done
         
     To do:
         - 
