@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Certificate {
         /**
      * @param Scanner
-     * @return number of certificates in table 
+     * @return number of certificates in table or -1 if there is an error
     */
     public static int getNumOfCert(Scanner scanner) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
@@ -36,8 +36,41 @@ public class Certificate {
             System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
-        
-        return 1;
+
+        return -1;
+    }
+
+    /**
+    * @param Scanner
+    * @return prints out the certificates id and name of certificate
+    */
+    public static void listCertficate(Scanner scanner) {
+        String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
+        String username = "postgres";
+
+        String password = Authentication.getPassword(scanner);
+        try {
+            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            System.out.println("Connected to database");
+
+            Statement statement = connection.createStatement();
+
+            // Execute query and return result to rset
+            String sql = "SELECT id, name FROM certificates";
+            ResultSet rset = statement.executeQuery(sql);
+
+            // Print the data from the database
+            while(rset.next()) {
+                int certId = rset.getInt("id");
+                String certName= rset.getString("name");
+                System.out.println(certId + " - " + certName);
+            }
+            
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("Error in connecting to PostgreSQL server");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -102,32 +135,6 @@ public class Certificate {
             connection.close();
 
         } catch(SQLException e) {
-            System.out.println("Error in connecting to PostgreSQL server");
-            e.printStackTrace();
-        }
-    }
-
-    /**
-    * 
-    * @return 
-    */
-    public static void listCertficate(Scanner scanner) {
-        String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
-        String username = "postgres";
-
-        String password = Authentication.getPassword(scanner);
-        try {
-            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
-            System.out.println("Connected to database");
-            String sql = "";
-            Statement statement = connection.createStatement();
-            int rows = statement.executeUpdate(sql);
-
-            if(rows > 0) {
-                System.out.println("listed");
-            }
-            connection.close();
-        } catch (Exception e) {
             System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }

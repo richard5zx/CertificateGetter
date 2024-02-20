@@ -10,10 +10,11 @@ public class Main {
         while(running) {
             System.out.println();
             System.out.println("List of options:");
-            System.out.println("1) List Certificates");
-            System.out.println("2) Add New Certificates");
-            System.out.println("3) Delete existing Certificates");
-            System.out.println("4) Exit application");
+            System.out.println("1) Get number of certificates");
+            System.out.println("2) List certificates");
+            System.out.println("3) Add New Certificates");
+            System.out.println("4) Delete existing Certificates");
+            System.out.println("5) Exit application");
             System.out.println();
             System.out.print("Option: ");
 
@@ -24,18 +25,22 @@ public class Main {
             switch(option) {
                 case 1:
                     System.out.println("Option 1 selected");
-                    System.out.println(Certificate.getNumOfCert(scanner));
+                    System.out.println("Number of Certificates: " + Certificate.getNumOfCert(scanner));
                     break;
                 case 2:
                     System.out.println("Option 2 selected");
-                    Certificate.addCertficates(scanner);
+                    Certificate.listCertficate(scanner);
                     break;
                 case 3:
                     System.out.println("Option 3 selected");
-                    Certificate.deleteCertficates(scanner);
+                    Certificate.addCertficates(scanner);
                     break;
                 case 4:
-                    System.out.println("Option 4 selected, Bye!");
+                    System.out.println("Option 4 selected");
+                    Certificate.deleteCertficates(scanner);
+                    break;
+                case 5:
+                    System.out.println("Option 5 selected, Bye!");
                     return;
                 default:
                     System.out.println("Enter a valid selction");

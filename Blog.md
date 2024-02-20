@@ -3,14 +3,16 @@ Blog
 20/02/24
     Achievements:
         - Refactored code seperate functions to different files using SRP (Single Responsibility Principle)
-        - Get number of certificates done
-        
+        - Get number of certificates from database function done
+        - list the certificates from database function done
+
     To do:
         - 
 
     Thoughts:
         - I think I should start to create objects instead of just using static functions for example I should be creating certificate objects
         - I created an authentication file which could be used to write some authentication function later on
+        - There is a lot of repitition in connecting to database maybe that can be cut down
 
 19/02/24
     Achievements:
