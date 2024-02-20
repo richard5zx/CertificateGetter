@@ -6,10 +6,11 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class Certificate {
-        /**
+    
+    /**
      * @param Scanner
      * @return number of certificates in table or -1 if there is an error
-    */
+     */
     public static int getNumOfCert(Scanner scanner) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
@@ -41,9 +42,9 @@ public class Certificate {
     }
 
     /**
-    * @param Scanner
-    * @return prints out the certificates id and name of certificate
-    */
+     * @param Scanner
+     * @return prints out the certificates id and name of certificate
+     */
     public static void listCertficate(Scanner scanner) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
@@ -77,7 +78,7 @@ public class Certificate {
      * Function to add a certificate from user input to a database
      * @param Scanner 
      * @return void
-    */
+     */
     public static void addCertficates(Scanner scanner) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
@@ -107,10 +108,10 @@ public class Certificate {
     }
 
     /**
-    * Function to delete a certificate from user input to a database
-    * @param Scanner 
-    * @return void
-    */
+     * Function to delete a certificate from user input to a database
+     * @param Scanner 
+     * @return void
+     */
     public static void deleteCertficates(Scanner scanner) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
@@ -138,5 +139,17 @@ public class Certificate {
             System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
+
+    }
+
+    /**
+     * Function to delete a certificate from user input to a database
+     * @param Scanner 
+     * @return void
+     */
+    public static void selectCertificate(Scanner scanner) {
+        System.out.println("Select certificate ID");
+        int certId = scanner.nextInt();
+        Question.mainProgram(scanner, certId);
     }
 }

@@ -1,6 +1,5 @@
 import java.util.Scanner;
 
-
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello! Welcome to Certificate Getter!");
@@ -14,7 +13,8 @@ public class Main {
             System.out.println("2) List certificates");
             System.out.println("3) Add New Certificates");
             System.out.println("4) Delete existing Certificates");
-            System.out.println("5) Exit application");
+            System.out.println("5) Select certificate");
+            System.out.println("6) Exit application");
             System.out.println();
             System.out.print("Option: ");
 
@@ -40,7 +40,11 @@ public class Main {
                     Certificate.deleteCertficates(scanner);
                     break;
                 case 5:
-                    System.out.println("Option 5 selected, Bye!");
+                    System.out.println("Option 5 selected");
+                    Certificate.selectCertificate(scanner);
+                    break;
+                case 6:
+                    System.out.println("Option 6 selected, Bye!");
                     return;
                 default:
                     System.out.println("Enter a valid selction");

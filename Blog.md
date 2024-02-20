@@ -7,12 +7,14 @@ Blog
         - list the certificates from database function done
 
     To do:
-        - 
+        - Think about how to create a second layer of logic. Right now i have one for certificates and I want to have one more for questions for each certificate
+        - I need to create a table for the question bank of that certificate if I add a certificate. Same for when I delete
 
     Thoughts:
         - I think I should start to create objects instead of just using static functions for example I should be creating certificate objects
         - I created an authentication file which could be used to write some authentication function later on
         - There is a lot of repitition in connecting to database maybe that can be cut down
+        - There should be a way to move the switch statement in main to another file. The function shouldn't exist there. It can probably be moved to the Certificate class
 
 19/02/24
     Achievements:
