@@ -4,11 +4,13 @@ Blog
         - Did some refactoring to code moved the whole switch statement to a runner file which only runs programs
         - Finished initial draft of selctCertificate() function
         - Finished function that creates a new table in database
+        - Changed database contraint of certName in certificates so it is now unique and cannot have duplicates
 
     To do:
         - I need a verify function to verify if inputed name is in the databse or verify certification ID
         - datatypes still need to be changed and their constraints as well. But need to design databse properly first
         - need to create a data for all the questions and need to think about the design of that database too.
+        - finish deletequestiontable() function
 
     Thoughts:
         - start thinking of ways to authenticate once for all the applications, maybe like SSO or store a cache of the password for a set amount of time

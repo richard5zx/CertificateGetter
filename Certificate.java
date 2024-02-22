@@ -165,6 +165,10 @@ public class Certificate {
             if(rows > 0) {
                 System.out.println("Certificate deleted");
             }
+
+            // Remove table for question bank of the certificate selected
+            deleteQuestionTable(scanner, id, password);
+
             connection.close();
 
         } catch(SQLException e) {
@@ -172,6 +176,12 @@ public class Certificate {
             e.printStackTrace();
         }
 
+    }
+
+    private static void deleteQuestionTable(Scanner scanner, String id, String password) {
+        // Query the certificate name from the id given
+
+        // Drop the table with name queried
     }
 
     /**
