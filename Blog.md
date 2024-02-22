@@ -17,6 +17,7 @@ Blog
         - can thinking about security of password like hashing or encryption 
         - above point brings me think about if i should add different users with authorization levels to different database
         - I wanted to have a list of strings in a column of one my tables but apparently that is not the point of RDB (Relational Database) from this link: https://stackoverflow.com/questions/3070384/how-to-store-a-list-in-a-column-of-a-database-table, this challenges me to think about the design of making a new table. I want to use one-to-many relations in the extra database.
+        - need to think about unit testing too. I have been ignoring haha
 
 20/02/24
     Achievements:
