@@ -17,13 +17,6 @@ public class Question {
      * 
      * @return 
      */
-    public static void mainProgram(Scanner scanner, int certId) {
-    }
-
-    /**
-     * 
-     * @return 
-     */
     public static void addQToCert() {
     }
 

@@ -1,4 +1,16 @@
 Blog
+22/02/24
+    Achievements:
+        - Did some refactoring to code moved the whole switch statement to a runner file which only runs programs
+        - Finished initial draft of selctCertificate() function
+
+    To do:
+        - I need a verify function to verify if inputed name is in the databse or verify certification ID
+
+    Thoughts:
+        - start thinking of ways to authenticate once for all the applications, maybe like SSO or store a cache of the password for a set amount of time
+        - can thinking about security of password like hashing or encryption 
+        - above point brings me think about if i should add different users with authorization levels to differnt database
 
 20/02/24
     Achievements:

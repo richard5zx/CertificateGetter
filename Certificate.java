@@ -147,9 +147,15 @@ public class Certificate {
      * @param Scanner 
      * @return void
      */
-    public static void selectCertificate(Scanner scanner) {
+    public static String selectCertificate(Scanner scanner) {
         System.out.println("Select certificate ID");
-        int certId = scanner.nextInt();
-        Question.mainProgram(scanner, certId);
+        listCertficate(scanner);
+        String certName = scanner.nextLine();
+
+        System.out.print("Enter Certificate name: ");
+
+        // Function to verify the give name is in the certificate if not exit this function
+
+        return certName;
     }
 }
