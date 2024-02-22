@@ -45,7 +45,7 @@ public class Certificate {
      * @param Scanner
      * @return prints out the certificates id and name of certificate
      */
-    public static void listCertficate(Scanner scanner) {
+    public static void listCertficates(Scanner scanner) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
 
@@ -100,6 +100,38 @@ public class Certificate {
             if(rows > 0) {
                  System.out.println(certificateName + " certificate added");
             }
+
+            // Add new table for question bank of the certificate
+
+            createQuestionTable(scanner, certificateName, password);
+
+            connection.close();
+        } catch (SQLException e) {
+            System.out.println("Error in connecting to PostgreSQL server");
+            e.printStackTrace();
+        }
+    }
+
+    private static void createQuestionTable(Scanner scanner, String certificateName, String password) {
+        String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
+        String username = "postgres";
+
+        try {
+            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            System.out.println("Connected to database");
+            
+
+            String sql = "CREATE TABLE IF NOT EXISTS " + certificateName + " (\n"
+                 + "    CertificateID int PRIMARY KEY,\n"
+                 + "    QuestionID int UNIQUE, \n"
+                 + "    Question varchar(255) NOT NULL, \n"
+                 + "    Mistakes int DEFAULT 0, \n"
+                 + "    DateAdded TIMESTAMP NOT NULL \n"
+                 + ");";
+
+            Statement statement = connection.createStatement();
+            statement.execute(sql);
+
             connection.close();
         } catch (SQLException e) {
             System.out.println("Error in connecting to PostgreSQL server");
@@ -149,7 +181,7 @@ public class Certificate {
      */
     public static String selectCertificate(Scanner scanner) {
         System.out.println("Select certificate ID");
-        listCertficate(scanner);
+        listCertficates(scanner);
         String certName = scanner.nextLine();
 
         System.out.print("Enter Certificate name: ");

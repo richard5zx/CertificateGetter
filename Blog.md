@@ -3,14 +3,18 @@ Blog
     Achievements:
         - Did some refactoring to code moved the whole switch statement to a runner file which only runs programs
         - Finished initial draft of selctCertificate() function
+        - Finished function that creates a new table in database
 
     To do:
         - I need a verify function to verify if inputed name is in the databse or verify certification ID
+        - datatypes still need to be changed and their constraints as well. But need to design databse properly first
+        - need to create a data for all the questions and need to think about the design of that database too.
 
     Thoughts:
         - start thinking of ways to authenticate once for all the applications, maybe like SSO or store a cache of the password for a set amount of time
         - can thinking about security of password like hashing or encryption 
-        - above point brings me think about if i should add different users with authorization levels to differnt database
+        - above point brings me think about if i should add different users with authorization levels to different database
+        - I wanted to have a list of strings in a column of one my tables but apparently that is not the point of RDB (Relational Database) from this link: https://stackoverflow.com/questions/3070384/how-to-store-a-list-in-a-column-of-a-database-table, this challenges me to think about the design of making a new table. I want to use one-to-many relations in the extra database.
 
 20/02/24
     Achievements:

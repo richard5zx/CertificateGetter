@@ -30,7 +30,7 @@ public class Runner {
                     break;
                 case 2:
                     System.out.println("Option 2 selected");
-                    Certificate.listCertficate(scanner);
+                    Certificate.listCertficates(scanner);
                     break;
                 case 3:
                     System.out.println("Option 3 selected");
