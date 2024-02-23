@@ -2,6 +2,7 @@ Blog
 
 23/02/24
     Achievements:
+        - Fixed the listCertificate() function bug. I changed column name in table of databse to having uppercase in it, postgres automatically changes to lower case unless you put it in double quotes. link: https://docs.aws.amazon.com/dms/latest/sql-server-to-aurora-postgresql-migration-playbook/chap-sql-server-aurora-pg.sql.casesensitivity.html
         - 
 
     To do:

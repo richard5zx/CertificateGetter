@@ -57,13 +57,13 @@ public class Certificate {
             Statement statement = connection.createStatement();
 
             // Execute query and return result to rset
-            String sql = "SELECT id, name FROM certificates";
+            String sql = "SELECT id, \"certName\" FROM certificates";
             ResultSet rset = statement.executeQuery(sql);
 
             // Print the data from the database
             while(rset.next()) {
                 int certId = rset.getInt("id");
-                String certName= rset.getString("name");
+                String certName= rset.getString("certName");
                 System.out.println(certId + " - " + certName);
             }
             
