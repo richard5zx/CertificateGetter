@@ -1,4 +1,15 @@
 Blog
+
+23/02/24
+    Achievements:
+        - 
+
+    To do:
+        - 
+
+    Thoughts:
+        - read this today: https://learn.microsoft.com/en-us/training/modules/describe-identity-principles-concepts/4-describe-role-identity-provider, thought I could implement a identity provider which reduces the need to enter a password
+
 22/02/24
     Achievements:
         - Did some refactoring to code moved the whole switch statement to a runner file which only runs programs
