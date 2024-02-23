@@ -3,6 +3,15 @@ import java.util.Scanner;
 public class Runner {
 
     public static void runCertMenu() {
+        // Scanner scanner = new Scanner(System.in);
+        // System.out.print("Enter certificate id: ");
+        // String input = scanner.nextLine();
+        // String result = Certificate.getCertNamefromId(scanner, input, "drahciR1999!");
+        // System.out.println(result);
+ 
+        // Certificate.deleteQuestionTable(scanner, input, "drahciR1999!");
+
+
         System.out.println("Hello! Welcome to Certificate Getter!");
 
         boolean running = true;
