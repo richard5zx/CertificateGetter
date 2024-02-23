@@ -91,19 +91,19 @@ public class Certificate {
             System.out.println("Connected to database");
 
             System.out.print("Enter name of new certificate: ");
-            String certificateName = scanner.nextLine();
+            String certName = scanner.nextLine();
 
-            String sql = "Insert INTO certificates (name)" + " VALUES('" + certificateName + "')";
+            String sql = "Insert INTO certificates (\"certName\")" + " VALUES('" + certName + "')";
             
             Statement statement = connection.createStatement();
             int rows = statement.executeUpdate(sql);
             if(rows > 0) {
-                 System.out.println(certificateName + " certificate added");
+                 System.out.println(certName + " certificate added");
             }
 
             // Add new table for question bank of the certificate
 
-            createQuestionTable(scanner, certificateName, password);
+            createQuestionTable(scanner, certName, password);
 
             connection.close();
         } catch (SQLException e) {
@@ -112,7 +112,7 @@ public class Certificate {
         }
     }
 
-    private static void createQuestionTable(Scanner scanner, String certificateName, String password) {
+    private static void createQuestionTable(Scanner scanner, String certName, String password) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
 
@@ -121,7 +121,7 @@ public class Certificate {
             System.out.println("Connected to database");
             
 
-            String sql = "CREATE TABLE IF NOT EXISTS " + certificateName + " (\n"
+            String sql = "CREATE TABLE IF NOT EXISTS " + certName + " (\n"
                  + "    CertificateID int PRIMARY KEY,\n"
                  + "    QuestionID int UNIQUE, \n"
                  + "    Question varchar(255) NOT NULL, \n"
@@ -184,6 +184,8 @@ public class Certificate {
         // Drop the table with name queried
     }
 
+    
+    
     /**
      * Function to delete a certificate from user input to a database
      * @param Scanner 
@@ -193,11 +195,20 @@ public class Certificate {
         System.out.println("Select certificate ID");
         listCertficates(scanner);
         String certName = scanner.nextLine();
-
+        
         System.out.print("Enter Certificate name: ");
-
+        
         // Function to verify the give name is in the certificate if not exit this function
-
+        
         return certName;
+    }
+
+    /**
+     * Function to wipe/reset all certificates
+     * @param Scanner 
+     * @return void
+     */
+    public static void deleteAllCertificates(Scanner scanner) {
+        //todo
     }
 }
