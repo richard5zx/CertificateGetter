@@ -6,7 +6,8 @@ Blog
         - Fixed bug for addCertificates() function
 
     To do:
-        - 
+        - Need to implement something in deletecertificate to detect if the given ID number is actually in the table
+        - quering certificate name from the id is proving to be annoying. I will come back to it after some food, il have to spit out everything and see if there is acutally anything
 
     Thoughts:
         - read this today: https://learn.microsoft.com/en-us/training/modules/describe-identity-principles-concepts/4-describe-role-identity-provider, thought I could implement a identity provider which reduces the need to enter a password

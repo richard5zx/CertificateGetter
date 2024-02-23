@@ -59,5 +59,6 @@ public class Runner {
 
     public static void runQuestionMenu(Scanner scanner, String string) {
         System.out.println("made it to runQuestionMenu");
+        System.out.println("In Progress");
     }
 }
