@@ -1,4 +1,13 @@
 Blog
+23/02/24
+    Achievements:
+        - Moved over to maven, in maven u need to add the jdbc driver by dependency. Follow this link (https://www.ibm.com/docs/en/radfws/9.7?topic=dependencies-adding-other-modules)
+
+    To do:
+        - 
+
+    Thoughts:
+        - Since I couldn't fix the bug I will use a junit testing to help me. But it comes with gradle or maven. Im not sure what it is but I will watch tutorials and see how it works. It helps with orgranizing my project and I will use gradle.
 
 23/02/24
     Achievements:
@@ -112,8 +121,9 @@ Blog
 
     Resources used:
         - https://www.youtube.com/watch?v=OLmAZmBSwMo
+            - You need to download and add jdbc driver under referenced libraries
             - Teaches you how to connect java to postgres database
-            - Shows how to add data to databse using java via sql
+            - Shows how to add data to database using java via sql
 
 
 15/02/24

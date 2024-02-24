@@ -1,4 +1,6 @@
-import java.net.Socket;
+package richard5zx;
+
+// import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;

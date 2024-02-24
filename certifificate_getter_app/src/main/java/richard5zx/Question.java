@@ -1,3 +1,5 @@
+package richard5zx;
+
 import java.util.List;
 // import java.util.Scanner;
 
