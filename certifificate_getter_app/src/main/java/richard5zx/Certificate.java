@@ -8,9 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
 
-import javax.print.attribute.standard.Sides;
-import javax.sound.midi.Soundbank;
-
 public class Certificate {
     
     /**
@@ -205,13 +202,6 @@ public class Certificate {
             String sql = "DROP TABLE " + cert_name + ";";
             Statement statement = connection.createStatement();
 
-            // System.out.println("--------------bug4-------------");
-            // System.out.println(sql);
-            // System.out.println(cert_name);
-            // System.out.println(id);
-            // System.out.println(password);
-            // System.out.println("--------------bug4-------------");
-
             statement.executeUpdate(sql);
 
             connection.close();
@@ -231,7 +221,6 @@ public class Certificate {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
 
-        // String cert_name = null;
         // Drop the table with name queried
         try {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
@@ -241,12 +230,10 @@ public class Certificate {
 
             // Execute query to find the name of certificate from id
             String sql = "SELECT * FROM certificates WHERE cert_id = " + id + ";";
-            System.out.println("bug1: " + sql);
 
             ResultSet rset = statement.executeQuery(sql);
             while(rset.next()) {
                 String cert_name = rset.getString("cert_name");
-                System.out.println("bug2: " + cert_name);
                 return cert_name;
             }
 
@@ -257,7 +244,7 @@ public class Certificate {
             e.printStackTrace();
         }
 
-        return "FixingBug";
+        return null;
     }   
 
     /**
@@ -266,7 +253,33 @@ public class Certificate {
      * @return void
      */
     public static void deleteAllCertificates(Scanner scanner) {
-        //todo
+        // remove tables related to the certificate
+        String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
+        String username = "postgres";
+
+        String password = Authentication.getPassword(scanner);
+
+        try {
+            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            System.out.println("Connected to database");
+            
+            Statement statement = connection.createStatement();
+            
+            String sql = "SELECT * FROM certificates";
+            
+            ResultSet rset = statement.executeQuery(sql);
+            while(rset.next()) {
+                String cert_name = rset.getString("cert_name");
+            }
+
+        } catch (Exception e) {
+
+        }
+        
+
+        // Remove the certificate from the certificate table
+        //String sql = "TRUNCATE TABLE certificates;";
+        //String sql = "DELETE * FROM table_name;";
     }
 
     /**

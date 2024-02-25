@@ -2,9 +2,18 @@ Blog
 25/02/24
     Achievements:
         - I finally crushed the bug in delete certificates! Basically, I wanted to query a data that I deleted already. So if I queried the data first than delete it, it would work. Thank god. I was stuck here for 2 days
-
+        - added dependency because it kept saying "The compiler compliance specified is 1.7 but a JRE 11 is used". To fix this I used this link: https://stackoverflow.com/questions/56372006/the-compiler-compliance-specified-is-1-6-but-a-jre-1-8-is-used. The second comment worked for me where I added this:
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <maven.compiler.source>1.11</maven.compiler.source>
+                <maven.compiler.target>1.11</maven.compiler.target>
+                <java.version>1.11</java.version>
+            </properties>
+        -
     To do:
-        - 
+        - Refactor my code so I can use them in junit test
+        - Think about my design and parameters for functions and change them for junit testing
+        - finish the last function (deleteall) after refactoring
 
     Thoughts:
         - I am starting the unit testing but the way I wrote my functions doesn't allow me to implement the test. I need to refactor my code to allow me to implement my functions at least for the certficate file
