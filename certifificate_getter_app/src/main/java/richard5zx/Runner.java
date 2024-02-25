@@ -50,6 +50,18 @@ public class Runner {
                 case 4:
                     System.out.println("Option 4 selected");
                     Certificate.deleteCertficates(scanner);
+
+                    // Bug testing
+                    // System.out.print("Enter id: ");
+                    // String id = scanner.next();
+                    // String string = Certificate.getCertNamefromId(scanner, id, "drahciR1999!");
+                    // System.out.println(string);
+
+                    // Bug testing 2
+                    // System.out.print("Enter id: ");
+                    // String id = scanner.next();
+                    // Certificate.deleteQuestionTable(scanner, id, "drahciR1999!");
+
                     break;
                 case 5:
                     System.out.println("Option 5 selected");

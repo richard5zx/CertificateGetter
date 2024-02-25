@@ -1,8 +1,7 @@
 package richard5zx;
 
 /**
- * Hello world!
- *
+ * Run app
  */
 public class App 
 {

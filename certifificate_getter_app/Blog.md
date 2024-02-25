@@ -1,10 +1,20 @@
 Blog
-23/02/24
+25/02/24
     Achievements:
-        - Moved over to maven, in maven u need to add the jdbc driver by dependency. Follow this link (https://www.ibm.com/docs/en/radfws/9.7?topic=dependencies-adding-other-modules)
+        - I finally crushed the bug in delete certificates! Basically, I wanted to query a data that I deleted already. So if I queried the data first than delete it, it would work. Thank god. I was stuck here for 2 days
 
     To do:
         - 
+
+    Thoughts:
+        - I am starting the unit testing but the way I wrote my functions doesn't allow me to implement the test. I need to refactor my code to allow me to implement my functions at least for the certficate file
+
+24/02/24
+    Achievements:
+        - Moved over to maven, in maven u need to add the jdbc driver by dependency.
+            - Use this link to add driver (https://www.enterprisedb.com/postgres-tutorials/how-add-postgresql-driver-dependency-maven)
+
+    To do:
 
     Thoughts:
         - Since I couldn't fix the bug I will use a junit testing to help me. But it comes with gradle or maven. Im not sure what it is but I will watch tutorials and see how it works. It helps with orgranizing my project and I will use gradle.
