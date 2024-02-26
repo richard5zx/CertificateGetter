@@ -2,15 +2,21 @@ Blog
 
 26/02/24
     Achievements:
-        - Change Authentication method
-        - Add database for users
-        - Find a method to encrypt data before adding it to database
+        - change Authentication method
+        - add database for users
+        - find a method to encrypt data before adding it to database
+        - Added a way to not alwways type the password
+        - refactored quite a bit
+        - added a single test
 
     To do:
         - Refactor
+        - Need to complete tests and refactoring and merge branch
+        - complete the delete all certificates test
 
     Thoughts:
         - Will learn and experiment using github branches to do refactoring
+
 
 25/02/24
     Achievements:
