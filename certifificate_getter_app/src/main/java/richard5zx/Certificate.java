@@ -6,7 +6,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
 
 public class Certificate {
     
@@ -14,12 +13,9 @@ public class Certificate {
      * @param Scanner
      * @return number of certificates in table or -1 if there is an error
      */
-    public static int getNumOfCert(Scanner scanner) {
+    public static int getNumOfCert(String password) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
-
-        // Get database password from user
-        String password = Authentication.getPassword(scanner);
 
         try {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
@@ -48,11 +44,9 @@ public class Certificate {
      * @param Scanner
      * @return prints out the certificates id and name of certificate
      */
-    public static void listCertficates(Scanner scanner) {
+    public static void listCertficates(String password) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
-
-        String password = Authentication.getPassword(scanner);
         try {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
             System.out.println("Connected to database");
@@ -82,19 +76,13 @@ public class Certificate {
      * @param Scanner 
      * @return void
      */
-    public static void addCertficates(Scanner scanner) {
+    public static void addCertficate(String cert_name, String password) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
-
-        // Get database password from user
-        String password = Authentication.getPassword(scanner);
 
         try {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
             System.out.println("Connected to database");
-
-            System.out.print("Enter name of new certificate: ");
-            String cert_name = scanner.nextLine();
 
             String sql = "INSERT INTO certificates (\"cert_name\")" + " VALUES('" + cert_name + "')";
             
@@ -106,7 +94,7 @@ public class Certificate {
 
             // Add new table for question bank of the certificate
 
-            createQuestionTable(scanner, cert_name, password);
+            createQuestionTable(cert_name, password);
 
             connection.close();
         } catch (SQLException e) {
@@ -115,7 +103,7 @@ public class Certificate {
         }
     }
 
-    public static void createQuestionTable(Scanner scanner, String cert_name, String password) {
+    public static void createQuestionTable(String cert_name, String password) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
 
@@ -146,21 +134,16 @@ public class Certificate {
      * @param Scanner 
      * @return void
      */
-    public static void deleteCertficates(Scanner scanner) {
+    public static void deleteCertficate(String id, String password) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
-        
-        String password = Authentication.getPassword(scanner);
 
         try {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
             System.out.println("Connected to database");
 
-            System.out.print("Select id of certificate you want to delete: ");
-            String id = scanner.nextLine();
-
             // Drop table (question bank) from the database
-            deleteQuestionTable(scanner, id, password);
+            deleteQuestionTable(id, password);
             
             // Drop the data from the certificates table
             String sql = "DELETE FROM certificates WHERE cert_id = " + id + ";";
@@ -184,13 +167,13 @@ public class Certificate {
      * @param Scanner 
      * @return void
      */
-    public static void deleteQuestionTable(Scanner scanner, String id, String password) {
+    public static void deleteQuestionTable(String id, String password) {
         
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
         
         // Query name of certificate from certificate id given
-        String cert_name = getCertNamefromId(scanner, id, password);
+        String cert_name = getCertNamefromId(id, password);
         System.out.println("bug3: " + cert_name);
         
         // Drop the table with the name queried above
@@ -217,7 +200,7 @@ public class Certificate {
      * @param Scanner, id of certificate, password of database
      * @return String of certificate name or null if not found
      */
-    public static String getCertNamefromId(Scanner scanner, String id, String password) {
+    public static String getCertNamefromId(String id, String password) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
 
@@ -248,16 +231,48 @@ public class Certificate {
     }   
 
     /**
+     * Function to query id of certificate from the name given
+     * @param Scanner, id of certificate, password of database
+     * @return String of certificate name or null if not found
+     */
+    public static String getCertIdfromName(String cert_name, String password) {
+        String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
+        String username = "postgres";
+
+        // Drop the table with name queried
+        try {
+            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            System.out.println("Connected to database");
+
+            Statement statement = connection.createStatement();
+
+            // Execute query to find the name of certificate from id
+            String sql = "SELECT * FROM certificates WHERE cert_name = " + cert_name + ";";
+
+            ResultSet rset = statement.executeQuery(sql);
+            while(rset.next()) {
+                String id = rset.getString("cert_id");
+                return id;
+            }
+
+            connection.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error in connecting to PostgreSQL server");
+            e.printStackTrace();
+        }
+
+        return null;
+    }   
+    /**
      * Function to wipe/reset all certificates
      * @param Scanner 
      * @return void
      */
-    public static void deleteAllCertificates(Scanner scanner) {
+    public static void deleteAllCertificates(String password) {
         // remove tables related to the certificate
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
-
-        String password = Authentication.getPassword(scanner);
 
         try {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
@@ -270,16 +285,17 @@ public class Certificate {
             ResultSet rset = statement.executeQuery(sql);
             while(rset.next()) {
                 String cert_name = rset.getString("cert_name");
+                deleteCertficate(cert_name, password);
             }
+
 
         } catch (Exception e) {
 
         }
-        
 
         // Remove the certificate from the certificate table
-        //String sql = "TRUNCATE TABLE certificates;";
-        //String sql = "DELETE * FROM table_name;";
+        // String sql = "TRUNCATE TABLE certificates;";
+        // String sql = "DELETE * FROM table_name;";
     }
 
     /**
@@ -287,15 +303,9 @@ public class Certificate {
      * @param Scanner 
      * @return void
      */
-    public static String selectCertificate(Scanner scanner) {
-        System.out.println("Select certificate ID");
-        listCertficates(scanner);
-        String cert_name = scanner.nextLine();
-        
-        System.out.print("Enter Certificate name: ");
-        
+    public static String selectCertificate(String cert_name, String password) {
         // Function to verify the give name is in the certificate if not exit this function
-        Runner.runQuestionMenu(scanner, cert_name);
+        Runner.runQuestionMenu(cert_name);
         return cert_name;
     }
 }

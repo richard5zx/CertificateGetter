@@ -7,27 +7,24 @@ import org.junit.Test;
 /**
  * Unit test for simple App.
  */
-public class CertificateTest
-{
+public class CertificateTest {
+
     /**
      * Test to add certificates in database
      */
     @Test
-    public void addCertTest()
-    {
+    public void addCertTest() {
         // Add Certificate
-        // Test getNumOfCert() Function
-        assertTrue( true );
-    }
+        Certificate.addCertficate("javaocp", "111");
+        Certificate.addCertficate("javaEE", "111");
+        Certificate.addCertficate("dp900", "111");
+        Certificate.addCertficate("az900", "111");
+        Certificate.addCertficate("sc900", "111");
+        Certificate.addCertficate("ai900", "111");
 
-    /**
-     * Rigorous Test :-)
-     */
-    @Test
-    public void getNumOfCertTest()
-    {
-        // Add Certificate
         // Test getNumOfCert() Function
-        assertTrue( true );
+        assertTrue(Certificate.getNumOfCert("111") == 6);
+
+        // Delete all from table
     }
 }
