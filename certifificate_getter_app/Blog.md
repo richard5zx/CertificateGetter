@@ -1,4 +1,17 @@
 Blog
+
+26/02/24
+    Achievements:
+        - Change Authentication method
+        - Add database for users
+        - Find a method to encrypt data before adding it to database
+
+    To do:
+        - Refactor
+
+    Thoughts:
+        - Will learn and experiment using github branches to do refactoring
+
 25/02/24
     Achievements:
         - I finally crushed the bug in delete certificates! Basically, I wanted to query a data that I deleted already. So if I queried the data first than delete it, it would work. Thank god. I was stuck here for 2 days
@@ -9,7 +22,7 @@ Blog
                 <maven.compiler.target>1.11</maven.compiler.target>
                 <java.version>1.11</java.version>
             </properties>
-        -
+        
     To do:
         - Refactor my code so I can use them in junit test
         - Think about my design and parameters for functions and change them for junit testing

@@ -9,13 +9,25 @@ import org.junit.Test;
  */
 public class CertificateTest
 {
-    
+    /**
+     * Test to add certificates in database
+     */
+    @Test
+    public void addCertTest()
+    {
+        // Add Certificate
+        // Test getNumOfCert() Function
+        assertTrue( true );
+    }
+
     /**
      * Rigorous Test :-)
      */
     @Test
     public void getNumOfCertTest()
     {
+        // Add Certificate
+        // Test getNumOfCert() Function
         assertTrue( true );
     }
 }

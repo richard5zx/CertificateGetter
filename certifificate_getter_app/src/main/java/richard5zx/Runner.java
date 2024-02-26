@@ -5,15 +5,6 @@ import java.util.Scanner;
 public class Runner {
 
     public static void runCertMenu() {
-        // Scanner scanner = new Scanner(System.in);
-        // System.out.print("Enter certificate id: ");
-        // String input = scanner.nextLine();
-        // String result = Certificate.getCertNamefromId(scanner, input, "drahciR1999!");
-        // System.out.println(result);
- 
-        // Certificate.deleteQuestionTable(scanner, input, "drahciR1999!");
-
-
         System.out.println("Hello! Welcome to Certificate Getter!");
 
         boolean running = true;
@@ -36,40 +27,28 @@ public class Runner {
 
             switch(option) {
                 case 1:
-                    System.out.println("Option 1 selected");
+                    System.out.println("Get num of certificates selected");
                     System.out.println("Number of Certificates: " + Certificate.getNumOfCert(scanner));
                     break;
                 case 2:
-                    System.out.println("Option 2 selected");
+                    System.out.println("List certificates selected");
                     Certificate.listCertficates(scanner);
                     break;
                 case 3:
-                    System.out.println("Option 3 selected");
+                    System.out.println("Add certificates selected");
                     Certificate.addCertficates(scanner);
                     break;
                 case 4:
-                    System.out.println("Option 4 selected");
+                    System.out.println("Delete certificates selected");
                     Certificate.deleteCertficates(scanner);
-
-                    // Bug testing
-                    // System.out.print("Enter id: ");
-                    // String id = scanner.next();
-                    // String string = Certificate.getCertNamefromId(scanner, id, "drahciR1999!");
-                    // System.out.println(string);
-
-                    // Bug testing 2
-                    // System.out.print("Enter id: ");
-                    // String id = scanner.next();
-                    // Certificate.deleteQuestionTable(scanner, id, "drahciR1999!");
-
                     break;
                 case 5:
-                    System.out.println("Option 5 selected");
+                    System.out.println("Select certificates selected");
                     String certName = Certificate.selectCertificate(scanner);
                     runQuestionMenu(scanner, certName);
                     break;
                 case 6:
-                    System.out.println("Option 6 selected, Bye!");
+                    System.out.println("Exit application, Bye!");
                     return;
                 default:
                     System.out.println("Enter a valid selction");
