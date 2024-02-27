@@ -1,4 +1,11 @@
 Blog
+27/02/24
+    Achievements:
+        - Finished is Numeric function to tell if a string can be converted to integer or not (Got function from: https://www.baeldung.com/java-check-string-number)
+
+    To do:
+
+    Thoughts:
 
 26/02/24
     Achievements:

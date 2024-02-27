@@ -134,7 +134,7 @@ public class Certificate {
      * @param Scanner 
      * @return void
      */
-    public static void deleteCertficateFromId(String id, String password) {
+    public static void deleteCertficate(String id, String password) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
 

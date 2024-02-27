@@ -33,10 +33,23 @@ public class CertificateTest {
     }
 
     /**
-     * Test to add and delete certificates
+     * Test the delete all function. It should remove all existing certificate tables and clear the certificates table data
      */
     @Test
     public void deleteAllCertTest() {
+        
+        // Delete all from table
+        Certificate.deleteAllCertificates("111");
+
+        // Test getNumOfCert() Function
+        assertTrue(Certificate.getNumOfCert("111") == 0);
+    }
+
+    /**
+     * Test the delete all function. It should remove all existing certificate tables and clear the certificates table data
+     */
+    @Test
+    public void deleteCertTest() {
         
         // Delete all from table
         Certificate.deleteAllCertificates("111");
