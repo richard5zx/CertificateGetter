@@ -93,7 +93,6 @@ public class Certificate {
             }
 
             // Add new table for question bank of the certificate
-
             createQuestionTable(cert_name, password);
 
             connection.close();
@@ -134,7 +133,40 @@ public class Certificate {
      * @param Scanner 
      * @return void
      */
-    public static void deleteCertficate(String id, String password) {
+    public static void deleteCertficate(String cert_name, String password) {
+        String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
+        String username = "postgres";
+
+        try {
+            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            System.out.println("Connected to database");
+
+            // Drop table (question bank) from the database
+            deleteQuestionTable(cert_name, password);
+            
+            // Drop the data from the certificates table
+            String sql = "DELETE FROM certificates WHERE cert_name = " + cert_name + ";";
+
+            Statement statement = connection.createStatement();
+            int rows = statement.executeUpdate(sql);
+            if(rows > 0) {
+                System.out.println("Certificate deleted");
+            }
+
+            connection.close();
+
+        } catch(SQLException e) {
+            System.out.println("Error in connecting to PostgreSQL server");
+            e.printStackTrace();
+        }
+    }
+
+        /**
+     * Function to delete a certificate from user input to a database
+     * @param Scanner 
+     * @return void
+     */
+    public static void deleteCertficate(int id, String password) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
 
@@ -167,7 +199,35 @@ public class Certificate {
      * @param Scanner 
      * @return void
      */
-    public static void deleteQuestionTable(String id, String password) {
+    public static void deleteQuestionTable(String cert_name, String password) {
+        
+        String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
+        String username = "postgres";
+        
+        try {
+            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            System.out.println("Connected to database");
+
+            System.out.println(cert_name);
+            String sql = "DROP TABLE " + cert_name + ";";
+            Statement statement = connection.createStatement();
+
+            statement.executeUpdate(sql);
+
+            connection.close();
+            System.out.println("Table Dropped");
+        } catch (SQLException e) {
+            System.out.println("Error in connecting to PostgreSQL server");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Function to delete table related to the certificate chosen
+     * @param Scanner 
+     * @return void
+     */
+    public static void deleteQuestionTable(int id, String password) {
         
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
@@ -199,7 +259,7 @@ public class Certificate {
      * @param Scanner, id of certificate, password of database
      * @return String of certificate name or null if not found
      */
-    public static String getCertNamefromId(String id, String password) {
+    public static String getCertNamefromId(int cert_id, String password) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
 
@@ -211,7 +271,7 @@ public class Certificate {
             Statement statement = connection.createStatement();
 
             // Execute query to find the name of certificate from id
-            String sql = "SELECT * FROM certificates WHERE cert_id = " + id + ";";
+            String sql = "SELECT * FROM certificates WHERE cert_id = " + cert_id + ";";
 
             ResultSet rset = statement.executeQuery(sql);
             while(rset.next()) {
