@@ -10,7 +10,7 @@ import org.junit.Test;
 public class CertificateTest {
 
     /**
-     * Test to add certificates in database
+     * Test to add and delete certificates
      */
     @Test
     public void addCertTest() {
@@ -25,6 +25,23 @@ public class CertificateTest {
         // Test getNumOfCert() Function
         assertTrue(Certificate.getNumOfCert("111") == 6);
 
+        // Reset database: Delete all from table
+        Certificate.deleteAllCertificates("111");
+        
+        // Test getNumOfCert() Function
+        assertTrue(Certificate.getNumOfCert("111") == 0);
+    }
+
+    /**
+     * Test to add and delete certificates
+     */
+    @Test
+    public void deleteAllCertTest() {
+        
         // Delete all from table
+        Certificate.deleteAllCertificates("111");
+
+        // Test getNumOfCert() Function
+        assertTrue(Certificate.getNumOfCert("111") == 0);
     }
 }

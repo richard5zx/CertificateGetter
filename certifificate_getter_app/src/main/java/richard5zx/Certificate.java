@@ -134,7 +134,7 @@ public class Certificate {
      * @param Scanner 
      * @return void
      */
-    public static void deleteCertficate(String id, String password) {
+    public static void deleteCertficateFromId(String id, String password) {
         String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
         String username = "postgres";
 
@@ -174,7 +174,6 @@ public class Certificate {
         
         // Query name of certificate from certificate id given
         String cert_name = getCertNamefromId(id, password);
-        System.out.println("bug3: " + cert_name);
         
         // Drop the table with the name queried above
         try {
@@ -231,40 +230,6 @@ public class Certificate {
     }   
 
     /**
-     * Function to query id of certificate from the name given
-     * @param Scanner, id of certificate, password of database
-     * @return String of certificate name or null if not found
-     */
-    public static String getCertIdfromName(String cert_name, String password) {
-        String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
-        String username = "postgres";
-
-        // Drop the table with name queried
-        try {
-            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
-            System.out.println("Connected to database");
-
-            Statement statement = connection.createStatement();
-
-            // Execute query to find the name of certificate from id
-            String sql = "SELECT * FROM certificates WHERE cert_name = " + cert_name + ";";
-
-            ResultSet rset = statement.executeQuery(sql);
-            while(rset.next()) {
-                String id = rset.getString("cert_id");
-                return id;
-            }
-
-            connection.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error in connecting to PostgreSQL server");
-            e.printStackTrace();
-        }
-
-        return null;
-    }   
-    /**
      * Function to wipe/reset all certificates
      * @param Scanner 
      * @return void
@@ -279,14 +244,19 @@ public class Certificate {
             System.out.println("Connected to database");
             
             Statement statement = connection.createStatement();
-            
+
+            // 1) Remove each table
             String sql = "SELECT * FROM certificates";
             
             ResultSet rset = statement.executeQuery(sql);
             while(rset.next()) {
-                String cert_name = rset.getString("cert_name");
-                deleteCertficate(cert_name, password);
+                String cert_id = rset.getString("cert_id");
+                deleteQuestionTable(cert_id, password);
             }
+
+            // 2) Remove all contents of certificate table
+            sql = "TRUNCATE TABLE certificates;";
+            statement.execute(sql);
 
 
         } catch (Exception e) {
@@ -297,6 +267,7 @@ public class Certificate {
         // String sql = "TRUNCATE TABLE certificates;";
         // String sql = "DELETE * FROM table_name;";
     }
+
 
     /**
      * Function to delete a certificate from user input to a database

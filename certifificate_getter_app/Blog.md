@@ -16,7 +16,7 @@ Blog
 
     Thoughts:
         - Will learn and experiment using github branches to do refactoring
-
+        - restart the primary key counter using this "TRUNCATE TABLE table_name RESTART IDENTITY" from: https://stackoverflow.com/questions/3819292/reset-postgresql-primary-key-to-1
 
 25/02/24
     Achievements:
