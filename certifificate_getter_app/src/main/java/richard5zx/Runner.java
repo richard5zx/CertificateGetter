@@ -92,7 +92,7 @@ public class Runner {
                     Certificate.deleteAllCertificates(password);
                     break;
                 case 6:
-                    System.out.println("Select certificate to practice: ");
+                    System.out.print("Select certificate to practice: ");
                     String certName = scanner.nextLine();
                     runQuestionMenu(certName, password);
                     break;
@@ -111,5 +111,10 @@ public class Runner {
     public static void runQuestionMenu(String cert, String string) {
         System.out.println("made it to runQuestionMenu");
         System.out.println("In Progress");
+        
+        boolean runningMenu = true;
+        while (runningMenu) {
+            System.out.println("");
+        }
     }
 }

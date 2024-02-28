@@ -24,13 +24,13 @@ public class CertificateTest {
         Certificate.addCertficate("ai900", password);
 
         // Test getNumOfCert() Function
-        assertTrue(Certificate.getNumOfCert("111") == 6);
+        assertTrue(Certificate.getNumOfCert(password) == 6);
 
         // Reset database: Delete all from table
-        Certificate.deleteAllCertificates("111");
+        Certificate.deleteAllCertificates(password);
         
         // Test getNumOfCert() Function
-        assertTrue(Certificate.getNumOfCert("111") == 0);
+        assertTrue(Certificate.getNumOfCert(password) == 0);
     }
 
     /**
@@ -38,12 +38,12 @@ public class CertificateTest {
      */
     @Test
     public void deleteAllCertTest() {
-        
+        String password = "111";
         // Delete all from table
-        Certificate.deleteAllCertificates("111");
+        Certificate.deleteAllCertificates(password);
 
         // Test getNumOfCert() Function
-        assertTrue(Certificate.getNumOfCert("111") == 0);
+        assertTrue(Certificate.getNumOfCert(password) == 0);
     }
 
     /**
