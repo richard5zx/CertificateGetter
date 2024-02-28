@@ -1,11 +1,26 @@
 Blog
+
+28/02/24
+    Achievements:
+        - Fixed bug in
+        - Delete functions fixed
+
+    To do:
+        - Think about refactoring
+
+    Thoughts:
+        - Found bug in deleteAllCertificates. The tables are not deleted
+
 27/02/24
     Achievements:
         - Finished is Numeric function to tell if a string can be converted to integer or not (Got function from: https://www.baeldung.com/java-check-string-number)
+        - Merged branch back to main for testing
 
     To do:
+        - complete the new delete functions. They have bugs in them
 
     Thoughts:
+        - This is more complicated then I thought
 
 26/02/24
     Achievements:

@@ -76,12 +76,12 @@ public class Runner {
                     break;
                 case 4:
                     System.out.println("Delete certificate selected");
-                    System.out.print("Select id ir name of certificate you want to delete: ");
+                    System.out.print("Select id or name of certificate you want to delete: ");
                     
                     String cert = scanner.nextLine();
                     
                     if (HelperFunction.isNumeric(cert)) {
-                        int id = Integer.parseInt(input);
+                        int id = Integer.parseInt(cert);
                         Certificate.deleteCertficate(id, password);
                     } else {
                         Certificate.deleteCertficate(input, password);

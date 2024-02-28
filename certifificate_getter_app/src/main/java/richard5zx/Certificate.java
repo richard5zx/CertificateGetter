@@ -175,6 +175,7 @@ public class Certificate {
             System.out.println("Connected to database");
 
             // Drop table (question bank) from the database
+            System.out.println("-----------Im over here: " + id);
             deleteQuestionTable(id, password);
             
             // Drop the data from the certificates table
@@ -310,8 +311,9 @@ public class Certificate {
             
             ResultSet rset = statement.executeQuery(sql);
             while(rset.next()) {
-                String cert_id = rset.getString("cert_id");
-                deleteQuestionTable(cert_id, password);
+                String cert_id_string = rset.getString("cert_id");
+                int cert_id_int = Integer.parseInt(cert_id_string);
+                deleteQuestionTable(cert_id_int, password);
             }
 
             // 2) Remove all contents of certificate table
