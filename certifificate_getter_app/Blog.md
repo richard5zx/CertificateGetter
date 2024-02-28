@@ -4,7 +4,7 @@ Blog
     Achievements:
         - Fixed bug in
         - Delete functions fixed
-        - Mor delete functions fixed
+        - More delete functions fixed
 
     To do:
         - Think about refactoring
@@ -15,6 +15,7 @@ Blog
         - Would like to reset the primary key number of certificate id back to 0
         - Another bug found in delete certificate function
         - The unit testing has been a great help. Defs need to use it more
+        - Watched video about solid principles: https://www.youtube.com/watch?v=HoA6aZPR5K0. I could use first example in my project
 
 27/02/24
     Achievements:
