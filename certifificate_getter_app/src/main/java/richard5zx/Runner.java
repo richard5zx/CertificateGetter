@@ -49,8 +49,8 @@ public class Runner {
             System.out.println("2) List certificates");
             System.out.println("3) Add New Certificates");
             System.out.println("4) Delete existing Certificates");
-            System.out.println("5) Select certificate");
-            System.out.println("6) Delete all certificates");
+            System.out.println("5) Delete all certificates");
+            System.out.println("6) Select certificate");
             System.out.println("7) Exit application");
             System.out.println();
             System.out.print("Option: ");
@@ -86,16 +86,15 @@ public class Runner {
                     } else {
                         Certificate.deleteCertficate(input, password);
                     }
-
                     break;
                 case 5:
-                    System.out.println("Select certificate to practice: ");
-                    String certName = scanner.nextLine();
-                    Certificate.selectCertificate(certName, password);
-                    break;
-                case 6:
                     System.out.println("Delete all certificates selected");
                     Certificate.deleteAllCertificates(password);
+                    break;
+                case 6:
+                    System.out.println("Select certificate to practice: ");
+                    String certName = scanner.nextLine();
+                    runQuestionMenu(certName, password);
                     break;
                 case 7:
                     System.out.println("Exit application, Bye!");
@@ -109,7 +108,7 @@ public class Runner {
         scanner.close();
     }
 
-    public static void runQuestionMenu(String string) {
+    public static void runQuestionMenu(String cert, String string) {
         System.out.println("made it to runQuestionMenu");
         System.out.println("In Progress");
     }

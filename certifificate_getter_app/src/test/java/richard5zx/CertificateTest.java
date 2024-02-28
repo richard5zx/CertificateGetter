@@ -14,13 +14,14 @@ public class CertificateTest {
      */
     @Test
     public void addCertTest() {
+        String password = "111";
         // Add Certificate
-        Certificate.addCertficate("javaocp", "111");
-        Certificate.addCertficate("javaEE", "111");
-        Certificate.addCertficate("dp900", "111");
-        Certificate.addCertficate("az900", "111");
-        Certificate.addCertficate("sc900", "111");
-        Certificate.addCertficate("ai900", "111");
+        Certificate.addCertficate("javaocp", password);
+        Certificate.addCertficate("javaEE", password);
+        Certificate.addCertficate("dp900", password);
+        Certificate.addCertficate("az900", password);
+        Certificate.addCertficate("sc900", password);
+        Certificate.addCertficate("ai900", password);
 
         // Test getNumOfCert() Function
         assertTrue(Certificate.getNumOfCert("111") == 6);
@@ -50,31 +51,37 @@ public class CertificateTest {
      */
     @Test
     public void deleteCertTest() {
+        String password = "111";
         // Add Certificate
-        Certificate.addCertficate("javaocp", "111");
-        Certificate.addCertficate("javaEE", "111");
-        Certificate.addCertficate("dp900", "111");
-        Certificate.addCertficate("az900", "111");
-        Certificate.addCertficate("sc900", "111");
-        Certificate.addCertficate("ai900", "111");
+        Certificate.addCertficate("javaocp", password);
+        Certificate.addCertficate("javaEE", password);
+        Certificate.addCertficate("dp900", password);
+        Certificate.addCertficate("az900", password);
+        Certificate.addCertficate("sc900", password);
+        Certificate.addCertficate("ai900", password);
 
         // Test getNumOfCert() Function
-        assertTrue(Certificate.getNumOfCert("111") == 6);
+        assertTrue(Certificate.getNumOfCert(password) == 6);
 
         // Delete 3 certifications
-        Certificate.deleteCertficate("javaocp", "111");
-        Certificate.deleteCertficate("javaEE", "111");
-        Certificate.deleteCertficate("dp900", "111");
+        Certificate.deleteCertficate("javaocp", password);
+        Certificate.deleteCertficate("javaEE", password);
+        Certificate.deleteCertficate("dp900", password);
         
         // Test getNumOfCert() Function
-        assertTrue(Certificate.getNumOfCert("111") == 3);
+        int bug = Certificate.getNumOfCert(password);
+        System.out.println(bug);
+        assertTrue(Certificate.getNumOfCert(password) == 3);
     
         // Delete rest of the certifications
-        Certificate.deleteCertficate("az900", "111");
-        Certificate.deleteCertficate("sc900", "111");
-        Certificate.deleteCertficate("ai900", "111");
+        Certificate.deleteCertficate("az900", password);
+        Certificate.deleteCertficate("sc900", password);
+        Certificate.deleteCertficate("ai900", password);
         
         // Test getNumOfCert() Function
-        assertTrue(Certificate.getNumOfCert("111") == 3);
+        assertTrue(Certificate.getNumOfCert(password) == 0);
+
+        // Make sure everything is deleted from certificate table
+        Certificate.deleteAllCertificates(password);
     }
 }

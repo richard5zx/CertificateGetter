@@ -145,7 +145,7 @@ public class Certificate {
             deleteQuestionTable(cert_name, password);
             
             // Drop the data from the certificates table
-            String sql = "DELETE FROM certificates WHERE cert_name = " + cert_name + ";";
+            String sql = "DELETE FROM certificates WHERE cert_name = '" + cert_name + "';";
 
             Statement statement = connection.createStatement();
             int rows = statement.executeUpdate(sql);
@@ -320,25 +320,8 @@ public class Certificate {
             sql = "TRUNCATE TABLE certificates;";
             statement.execute(sql);
 
-
         } catch (Exception e) {
 
         }
-
-        // Remove the certificate from the certificate table
-        // String sql = "TRUNCATE TABLE certificates;";
-        // String sql = "DELETE * FROM table_name;";
-    }
-
-
-    /**
-     * Function to delete a certificate from user input to a database
-     * @param Scanner 
-     * @return void
-     */
-    public static String selectCertificate(String cert_name, String password) {
-        // Function to verify the give name is in the certificate if not exit this function
-        Runner.runQuestionMenu(cert_name);
-        return cert_name;
     }
 }

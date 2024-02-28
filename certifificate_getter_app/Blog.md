@@ -4,12 +4,17 @@ Blog
     Achievements:
         - Fixed bug in
         - Delete functions fixed
+        - Mor delete functions fixed
 
     To do:
         - Think about refactoring
+        - If no certificates in when using list certificate function -> print no certificates available
 
     Thoughts:
         - Found bug in deleteAllCertificates. The tables are not deleted
+        - Would like to reset the primary key number of certificate id back to 0
+        - Another bug found in delete certificate function
+        - The unit testing has been a great help. Defs need to use it more
 
 27/02/24
     Achievements:
