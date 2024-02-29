@@ -1,6 +1,7 @@
 package richard5zx;
 
 public class Authentication {
+    
     // Attribute
     final String correctPassword = "111";
     private String enteredPassword;
@@ -12,16 +13,18 @@ public class Authentication {
 
     // Method
     /**
-    * See if user exist in database. If they do return true. If not return false
-    * @param Scanner
-    * @return String
+    * Authenticates password
+    * @return Token
     */
-    public boolean authenticate() {
+    public Token authenticate() {
+        boolean validity;
         if(enteredPassword.equals(this.correctPassword)) {
-            return true;
+            validity = true;
         } else {
-            return false;
+            validity = false;
         }
+
+        return new Token(correctPassword, validity);
     }
 
     /**
