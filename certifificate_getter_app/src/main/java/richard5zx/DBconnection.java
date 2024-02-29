@@ -22,8 +22,7 @@ public class DBconnection {
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
             return connection;
         } catch(Exception e) {
-    
-            System.out.println("Error in connecting to PostgreSQL server");
+            System.out.println("Error in connecting to server");
             e.printStackTrace();
         }
         return null;
@@ -37,7 +36,6 @@ public class DBconnection {
             System.out.println("Problem disconnecting to server");
             e.printStackTrace();
         }
-        
     }
     
     public void getConnectionObject() {

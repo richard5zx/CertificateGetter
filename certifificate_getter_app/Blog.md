@@ -3,14 +3,17 @@ Blog
 29/02/24
     Achievements:
         - Created a new validation system, if a correct password is given a valid token is give
-        -
+        - Finished implmenting the token system.
 
     To do:
         - Think about refactoring
         - If no certificates in when using list certificate function -> print no certificates available
+        - Think about moving my methods in certificates to CertificateDAO.
+        - Figure out what CertificateDAO actually does
 
     Thoughts:s
         - Used this to help me refactor too: https://www.youtube.com/watch?v=wGzHrKI8pjM&list=LL&index=4
+        - Still need to work on a better authentication system haha
 
 28/02/24
     Achievements:

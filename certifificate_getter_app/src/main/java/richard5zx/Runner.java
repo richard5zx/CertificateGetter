@@ -28,8 +28,10 @@ public class Runner {
                     boolean validity = token.getValidity();
                     if (!validity) {
                         System.out.println("Password is incorrect"); 
+                        System.out.println();
                     } else  {
                         System.out.println("Password is correct");
+                        System.out.println();
                         runCertMenu(scanner, token);
                     }
                     break;

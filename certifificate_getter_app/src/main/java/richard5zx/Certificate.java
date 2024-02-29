@@ -55,6 +55,10 @@ public class Certificate {
             String sql = "SELECT * FROM certificates";
             ResultSet rset = statement.executeQuery(sql);
 
+            // If list is empty then print out string saying it is full
+            if (!rset.next()) {
+                System.out.println("No certificates available");
+            }
             // Print the data from the database
             while(rset.next()) {
                 int cert_id = rset.getInt("cert_id");
