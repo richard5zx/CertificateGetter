@@ -23,11 +23,14 @@ public class Runner {
                     System.out.print("Enter password: ");
                     String password = scanner.nextLine();
                     Authentication authenticator = new Authentication(password);
-                    if (!authenticator.authenticate()) {
+
+                    Token token = authenticator.authenticate();
+                    boolean validity = token.getValidity();
+                    if (!validity) {
                         System.out.println("Password is incorrect"); 
                     } else  {
                         System.out.println("Password is correct");
-                        runCertMenu(scanner, authenticator.getPassword());
+                        runCertMenu(scanner, token);
                     }
                     break;
                 default:
@@ -38,7 +41,7 @@ public class Runner {
         }
     }
 
-    public static void runCertMenu(Scanner scanner, String password) {
+    public static void runCertMenu(Scanner scanner, Token token) {
         System.out.println("Hello! Welcome to Certificate Getter!");
 
         boolean running = true;
@@ -62,17 +65,17 @@ public class Runner {
             switch(option) {
                 case 1:
                     System.out.println("Get num of certificates selected");
-                    System.out.println("Number of Certificates: " + Certificate.getNumOfCert(password));
+                    System.out.println("Number of Certificates: " + Certificate.getNumOfCert(token));
                     break;
                 case 2:
                     System.out.println("List certificates selected");
-                    Certificate.listCertficates(password);
+                    Certificate.listCertficates(token);
                     break;
                 case 3:
                     System.out.println("Add certificates selected");
                     System.out.print("Enter name of new certificate: ");
                     String cert_name = scanner.nextLine();
-                    Certificate.addCertficate(cert_name, password);
+                    Certificate.addCertficate(cert_name, token);
                     break;
                 case 4:
                     System.out.println("Delete certificate selected");
@@ -82,19 +85,19 @@ public class Runner {
                     
                     if (HelperFunction.isNumeric(cert)) {
                         int id = Integer.parseInt(cert);
-                        Certificate.deleteCertficate(id, password);
+                        Certificate.deleteCertficate(id, token);
                     } else {
-                        Certificate.deleteCertficate(input, password);
+                        Certificate.deleteCertficate(input, token);
                     }
                     break;
                 case 5:
                     System.out.println("Delete all certificates selected");
-                    Certificate.deleteAllCertificates(password);
+                    Certificate.deleteAllCertificates(token);
                     break;
                 case 6:
                     System.out.print("Select certificate to practice: ");
                     String certName = scanner.nextLine();
-                    runQuestionMenu(certName, password);
+                    runQuestionMenu(certName, token);
                     break;
                 case 7:
                     System.out.println("Exit application, Bye!");
@@ -108,7 +111,7 @@ public class Runner {
         scanner.close();
     }
 
-    public static void runQuestionMenu(String cert, String string) {
+    public static void runQuestionMenu(String cert, Token token) {
         System.out.println("made it to runQuestionMenu");
         System.out.println("In Progress");
         

@@ -1,5 +1,17 @@
 Blog
 
+29/02/24
+    Achievements:
+        - Created a new validation system, if a correct password is given a valid token is give
+        -
+
+    To do:
+        - Think about refactoring
+        - If no certificates in when using list certificate function -> print no certificates available
+
+    Thoughts:s
+        - Used this to help me refactor too: https://www.youtube.com/watch?v=wGzHrKI8pjM&list=LL&index=4
+
 28/02/24
     Achievements:
         - Fixed bug in

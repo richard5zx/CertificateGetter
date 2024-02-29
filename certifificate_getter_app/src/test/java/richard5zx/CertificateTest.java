@@ -13,24 +13,41 @@ public class CertificateTest {
      * Test to add and delete certificates
      */
     @Test
-    public void addCertTest() {
+    public void getNumOfCertTest() {
+
         String password = "111";
-        // Add Certificate
-        Certificate.addCertficate("javaocp", password);
-        Certificate.addCertficate("javaEE", password);
-        Certificate.addCertficate("dp900", password);
-        Certificate.addCertficate("az900", password);
-        Certificate.addCertficate("sc900", password);
-        Certificate.addCertficate("ai900", password);
+        Authentication authenticator = new Authentication(password);
+        Token token = authenticator.authenticate();
 
         // Test getNumOfCert() Function
-        assertTrue(Certificate.getNumOfCert(password) == 6);
+        assertTrue(Certificate.getNumOfCert(token) == 0);
+    }
+    /**
+     * Test to add and delete certificates
+     */
+    @Test
+    public void addCertTest() {
+
+        String password = "111";
+        Authentication authenticator = new Authentication(password);
+        Token token = authenticator.authenticate();
+
+        // Add Certificate
+        Certificate.addCertficate("javaocp", token);
+        Certificate.addCertficate("javaEE", token);
+        Certificate.addCertficate("dp900", token);
+        Certificate.addCertficate("az900", token);
+        Certificate.addCertficate("sc900", token);
+        Certificate.addCertficate("ai900", token);
+
+        // Test getNumOfCert() Function
+        assertTrue(Certificate.getNumOfCert(token) == 6);
 
         // Reset database: Delete all from table
-        Certificate.deleteAllCertificates(password);
+        Certificate.deleteAllCertificates(token);
         
         // Test getNumOfCert() Function
-        assertTrue(Certificate.getNumOfCert(password) == 0);
+        assertTrue(Certificate.getNumOfCert(token) == 0);
     }
 
     /**
@@ -38,12 +55,16 @@ public class CertificateTest {
      */
     @Test
     public void deleteAllCertTest() {
+        
         String password = "111";
+        Authentication authenticator = new Authentication(password);
+        Token token = authenticator.authenticate();
+
         // Delete all from table
-        Certificate.deleteAllCertificates(password);
+        Certificate.deleteAllCertificates(token);
 
         // Test getNumOfCert() Function
-        assertTrue(Certificate.getNumOfCert(password) == 0);
+        assertTrue(Certificate.getNumOfCert(token) == 0);
     }
 
     /**
@@ -51,37 +72,41 @@ public class CertificateTest {
      */
     @Test
     public void deleteCertTest() {
+        
         String password = "111";
+        Authentication authenticator = new Authentication(password);
+        Token token = authenticator.authenticate();
+
         // Add Certificate
-        Certificate.addCertficate("javaocp", password);
-        Certificate.addCertficate("javaEE", password);
-        Certificate.addCertficate("dp900", password);
-        Certificate.addCertficate("az900", password);
-        Certificate.addCertficate("sc900", password);
-        Certificate.addCertficate("ai900", password);
+        Certificate.addCertficate("javaocp", token);
+        Certificate.addCertficate("javaEE", token);
+        Certificate.addCertficate("dp900", token);
+        Certificate.addCertficate("az900", token);
+        Certificate.addCertficate("sc900", token);
+        Certificate.addCertficate("ai900", token);
 
         // Test getNumOfCert() Function
-        assertTrue(Certificate.getNumOfCert(password) == 6);
+        assertTrue(Certificate.getNumOfCert(token) == 6);
 
         // Delete 3 certifications
-        Certificate.deleteCertficate("javaocp", password);
-        Certificate.deleteCertficate("javaEE", password);
-        Certificate.deleteCertficate("dp900", password);
+        Certificate.deleteCertficate("javaocp", token);
+        Certificate.deleteCertficate("javaEE", token);
+        Certificate.deleteCertficate("dp900", token);
         
         // Test getNumOfCert() Function
-        int bug = Certificate.getNumOfCert(password);
+        int bug = Certificate.getNumOfCert(token);
         System.out.println(bug);
-        assertTrue(Certificate.getNumOfCert(password) == 3);
+        assertTrue(Certificate.getNumOfCert(token) == 3);
     
         // Delete rest of the certifications
-        Certificate.deleteCertficate("az900", password);
-        Certificate.deleteCertficate("sc900", password);
-        Certificate.deleteCertficate("ai900", password);
+        Certificate.deleteCertficate("az900", token);
+        Certificate.deleteCertficate("sc900", token);
+        Certificate.deleteCertficate("ai900", token);
         
         // Test getNumOfCert() Function
-        assertTrue(Certificate.getNumOfCert(password) == 0);
+        assertTrue(Certificate.getNumOfCert(token) == 0);
 
         // Make sure everything is deleted from certificate table
-        Certificate.deleteAllCertificates(password);
+        Certificate.deleteAllCertificates(token);
     }
 }
