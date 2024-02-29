@@ -4,6 +4,7 @@ Blog
     Achievements:
         - Created a new validation system, if a correct password is given a valid token is give
         - Finished implmenting the token system.
+        - In listCertificates function, notify user with print statement to show there are no certificates
 
     To do:
         - Think about refactoring
