@@ -304,9 +304,12 @@ public class Certificate {
             sql = "TRUNCATE TABLE certificates;";
             statement.execute(sql);
 
+            System.out.println("All certificates deleteed");
+            
             dBconnection.disconnect(connection);
-        } catch (Exception e) {
-
+        } catch (SQLException e) {
+            System.out.println("Error in connecting to PostgreSQL server");
+            e.printStackTrace();
         }
     }
 }

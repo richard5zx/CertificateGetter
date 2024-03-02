@@ -38,7 +38,7 @@ public class Runner {
                 default:
                     System.out.println();
                     System.out.println("Auf Wiedersehen :)");
-                    return;   
+                    return;
             }
         }
     }
@@ -99,7 +99,7 @@ public class Runner {
                 case 6:
                     System.out.print("Select certificate to practice: ");
                     String certName = scanner.nextLine();
-                    runQuestionMenu(certName, token);
+                    runQuestionMenu(scanner, certName, token);
                     break;
                 case 7:
                     System.out.println("Exit application, Bye!");
@@ -113,13 +113,17 @@ public class Runner {
         scanner.close();
     }
 
-    public static void runQuestionMenu(String cert, Token token) {
-        System.out.println("made it to runQuestionMenu");
-        System.out.println("In Progress");
+    public static void runQuestionMenu(Scanner scanner, String cert, Token token) {
         
         boolean runningMenu = true;
         while (runningMenu) {
-            System.out.println("");
+            System.out.println("1) Enter a question");
+            System.out.println("2) Delete a question");
+            System.out.println("3) Modify a question");
+            System.out.println("4) Get number of certificates");
+            System.out.println("5) List top 15 mistakes");
+            System.out.println("6) Practice certificate");
+            System.out.println("7) Practice anothercertificate");
         }
     }
 }

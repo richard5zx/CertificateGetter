@@ -1,5 +1,15 @@
 Blog
 
+02/03/24
+    Achievements:
+        - Started on working on the questions
+
+    To do:
+        - Complete each of the function
+
+    Thoughts:
+        - After these functions. Should think about the UI for displaying the graphics
+
 29/02/24
     Achievements:
         - Created a new validation system, if a correct password is given a valid token is give
@@ -12,7 +22,7 @@ Blog
         - Think about moving my methods in certificates to CertificateDAO.
         - Figure out what CertificateDAO actually does
 
-    Thoughts:s
+    Thoughts:
         - Used this to help me refactor too: https://www.youtube.com/watch?v=wGzHrKI8pjM&list=LL&index=4
         - Still need to work on a better authentication system haha
 
