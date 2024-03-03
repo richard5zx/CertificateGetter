@@ -3,7 +3,7 @@ Blog
     Achievements:
         - Created PostgreSQL table that automatically adds date
             CREATE TABLE users (
-                user_id int PRIMARY KEY NOT NULL,
+                user_id SERIAL PRIMARY KEY,
                 username text UNIQUE NOT NULL,
                 password text NOT NULL,
                 date_created date DEFAULT CURRENT_DATE
