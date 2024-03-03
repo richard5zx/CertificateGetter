@@ -1,6 +1,5 @@
 package richard5zx;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -9,6 +8,48 @@ import org.junit.Test;
  * Unit test for simple App.
  */
 public class SystemManagerDAOTest {
+
+
+    /**
+     * Add and delete repeated user
+     */
+    @Test
+    public void registeringReapeatedUserTest() {
+        // Add users
+        // Todo
+    }
+    /**
+     * Add and delete user
+     */
+    @Test
+    public void getNumOfUserTest() {
+        // Add users
+        SystemManagerDAO.registerUser("user1", "password");
+        SystemManagerDAO.registerUser("user2", "password");
+
+        assertTrue(SystemManagerDAO.getNumOfUser() == 2);
+
+        SystemManagerDAO.deleteUser("user1");
+
+        assertTrue(SystemManagerDAO.getNumOfUser() == 1);
+
+        SystemManagerDAO.registerUser("user3", "password");
+        SystemManagerDAO.registerUser("user4", "password");
+        SystemManagerDAO.registerUser("user5", "password");
+        SystemManagerDAO.registerUser("user6", "password");
+        
+        assertTrue(SystemManagerDAO.getNumOfUser() == 5);
+
+        SystemManagerDAO.deleteUser("user4");
+        SystemManagerDAO.deleteUser("user6");
+
+        assertTrue(SystemManagerDAO.getNumOfUser() == 3);
+
+    
+        SystemManagerDAO.deleteAllUsers();
+        assertTrue(SystemManagerDAO.getNumOfUser() == 0);
+
+    }
 
     /**
      * Add and delete user
