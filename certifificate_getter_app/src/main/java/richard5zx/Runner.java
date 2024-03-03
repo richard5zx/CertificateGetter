@@ -13,7 +13,7 @@ public class Runner {
             System.out.println("Select number of below options:");
             System.out.println("\t1) Login (Enter 1)");
             System.out.println("\t2) Register account");
-            System.out.println("\t2) Exit application (Enter any key)");
+            System.out.println("\t3) Exit application (Enter any key)");
             System.out.print("Input: ");
 
             String input = scanner.nextLine();
@@ -38,9 +38,9 @@ public class Runner {
                     break;
 
                 case 2:
-                    System.out.println("Enter username: ");
+                    System.out.print("Enter username: ");
                     String username = scanner.nextLine();
-                    System.out.println("Enter password: ");
+                    System.out.print("Enter password: ");
                     String password = scanner.nextLine();
                     
                     // Register user in database

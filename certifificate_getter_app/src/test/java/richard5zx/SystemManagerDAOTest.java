@@ -1,5 +1,6 @@
 package richard5zx;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -10,39 +11,49 @@ import org.junit.Test;
 public class SystemManagerDAOTest {
 
     /**
-     * Check if the user already exists in database
+     * Add and delete user
      */
     @Test
     public void checkifUserRegisteredTest() {
-
+        // Add users
+        SystemManagerDAO.registerUser("user1", "password");
+        SystemManagerDAO.registerUser("user2", "password");
+        SystemManagerDAO.registerUser("user3", "password");
+        SystemManagerDAO.registerUser("user4", "password");
+        SystemManagerDAO.registerUser("user5", "password");
+        SystemManagerDAO.registerUser("user6", "password");
         
-        String dbpassword = "111";
-        Authentication authenticator = new Authentication(dbpassword);
-        Token token = authenticator.authenticate();
+        assertTrue(SystemManagerDAO.getNumOfUser() == 6);
+        
+        // Delete users
+        SystemManagerDAO.deleteUser("user1");
+        SystemManagerDAO.deleteUser("user4");
+        SystemManagerDAO.deleteUser("user6");
+        assertTrue(SystemManagerDAO.getNumOfUser() == 3);
 
-        assertTrue(Certificate.getNumOfCert(token) == 0);
-
-
-        // Test getNumOfCert() Function
+        SystemManagerDAO.deleteAllUsers();
     }
 
     /**
-     * Check if the user sucesfully registered
+     * Check if the user successfully registered
      */
     @Test
-    public void RegisterUserTest() {
+    public void registerUserTest() {
+        String username = "user1";
+        String password = "pass1";
 
-        String dbpassword = "111";
-        Authentication authenticator = new Authentication(dbpassword);
-        Token token = authenticator.authenticate();
+        SystemManagerDAO.registerUser(username, password);
+        
+        assertTrue(SystemManagerDAO.getNumOfUser() == 1);
 
-        assertTrue(Certificate.getNumOfCert(token) == 0);
+        // Register again
+        SystemManagerDAO.registerUser(username, password);
+        assertTrue(SystemManagerDAO.getNumOfUser() == 1);
 
-
-        // Test getNumOfCert() Function
+        SystemManagerDAO.deleteAllUsers();
     }
 
-        /**
+    /**
      * Check if the user sucesfully registered
      */
     @Test

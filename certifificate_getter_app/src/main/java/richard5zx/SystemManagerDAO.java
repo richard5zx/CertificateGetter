@@ -31,7 +31,7 @@ public class SystemManagerDAO {
         return true;
     }
 
-    public static boolean registerUser(String username, String password) {
+    public static void registerUser(String username, String password) {
         
         // Check if user is registered
         try {
@@ -39,20 +39,14 @@ public class SystemManagerDAO {
             Connection connection = dBconnection.connect();
             Statement statement = connection.createStatement();
 
-            String sql = "INSERT INTO users(username, password) "
-                        + "VALUES('" + username + "', '" + password + "';";
+            String sql = "INSERT INTO users (username, password) VALUES ('" + username + "', '" + password + "');";
 
-            statement.executeQuery(sql);
+            statement.executeUpdate(sql);
             
-            // Return true if successfully registered
-            return true;
         } catch (Exception e) {
             System.out.println("Error connecting to server");
             e.printStackTrace();
         }
-
-        // Return false if not successfully registered
-        return false;
     }
 
     public static boolean deleteUser(String username) {
@@ -63,12 +57,9 @@ public class SystemManagerDAO {
 
             
             // Delete record of user
-            String sql = "DELETE FROM user WHERE username = " + username + ";";
+            String sql = "DELETE FROM users WHERE username = '" + username + "';";
 
-            int rows = statement.executeUpdate(sql);
-            if(rows > 0) {
-                System.out.println("User deleted");
-            }
+            statement.executeUpdate(sql);
 
             dBconnection.disconnect(connection);
             

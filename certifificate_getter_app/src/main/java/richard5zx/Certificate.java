@@ -90,7 +90,7 @@ public class Certificate {
             DBconnection dBconnection = new DBconnection();
             Connection connection = dBconnection.connect();
 
-            String sql = "INSERT INTO certificates (\"cert_name\")" + " VALUES('" + cert_name + "')";
+            String sql = "INSERT INTO certificates (\"cert_name\")" + " VALUES('" + cert_name + "');";
             
             Statement statement = connection.createStatement();
             int rows = statement.executeUpdate(sql);
