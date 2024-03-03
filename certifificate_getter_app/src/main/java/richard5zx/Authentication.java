@@ -3,7 +3,7 @@ package richard5zx;
 public class Authentication {
     
     // Attribute
-    final String correctPassword = "111";
+    final String dbPassword = "111";
     private String enteredPassword;
 
     // Constructor

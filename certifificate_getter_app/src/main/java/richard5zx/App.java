@@ -6,6 +6,5 @@ package richard5zx;
 public class App {
     public static void main( String[] args ) {
         Runner.runLogin();
-        // Runner.runCertMenu();
     }
 }

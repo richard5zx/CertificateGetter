@@ -16,7 +16,7 @@ public class Question {
     // Constructor
 
     /**
-     * 
+     * Add a question to the certificate table
      * @return 
      */
     public static void addQToCert() {

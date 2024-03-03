@@ -1,4 +1,28 @@
 Blog
+03/03/24
+    Achievements:
+        - Created PostgreSQL table that automatically adds date
+            CREATE TABLE users (
+                user_id int PRIMARY KEY NOT NULL,
+                username text UNIQUE NOT NULL,
+                password text NOT NULL,
+                date_created date DEFAULT CURRENT_DATE
+            ); 
+        - sql for certificates
+            CREATE TABLE users (
+                user_id int NOT NULL,
+                cert_id int UNIQUE NOT NULL,
+                cert_name text UNIQUE NOT NULL
+            ); 
+        - 
+
+    To do:
+        - Refactor, add user that controls the certificates, and certificate should control the questions
+        - I want to add a system to add different users too
+
+    Thoughts:
+        - Realized how important UML diagrams and designs are. I feel like my design is all over the place and I keep needing to refactor my whole thing
+        - I have to think about how the tables reference each other. Need to learn about designing databases
 
 02/03/24
     Achievements:

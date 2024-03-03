@@ -11,7 +11,8 @@ public class Runner {
         boolean running = true;
         while(running) {
             System.out.println("Select number of below options:");
-            System.out.println("\t1) Enter application (Enter 1)");
+            System.out.println("\t1) Login (Enter 1)");
+            System.out.println("\t2) Register account");
             System.out.println("\t2) Exit application (Enter any key)");
             System.out.print("Input: ");
 
@@ -21,8 +22,8 @@ public class Runner {
             switch(choice) {
                 case 1:
                     System.out.print("Enter password: ");
-                    String password = scanner.nextLine();
-                    Authentication authenticator = new Authentication(password);
+                    String dbpassword = scanner.nextLine();
+                    Authentication authenticator = new Authentication(dbpassword);
 
                     Token token = authenticator.authenticate();
                     boolean validity = token.getValidity();
@@ -35,6 +36,23 @@ public class Runner {
                         runCertMenu(scanner, token);
                     }
                     break;
+
+                case 2:
+                    System.out.println("Enter username: ");
+                    String username = scanner.nextLine();
+                    System.out.println("Enter password: ");
+                    String password = scanner.nextLine();
+                    
+                    // Register user in database
+                    boolean registered = SystemManager.registerUser(username, password);
+                    
+                    if(registered) {
+                        System.out.println("New user is registed, Enter username and password in login menu to login");
+                    } else {
+                        System.out.println("Account already exists, enter your account in login menu");
+                    }
+                    break;
+
                 default:
                     System.out.println();
                     System.out.println("Auf Wiedersehen :)");
@@ -44,10 +62,10 @@ public class Runner {
     }
 
     public static void runCertMenu(Scanner scanner, Token token) {
-        System.out.println("Hello! Welcome to Certificate Getter!");
-
+        
         boolean running = true;
         while(running) {
+            System.out.println("Hello! Welcome to Certificate Getter!");
             System.out.println();
             System.out.println("List of options:");
             System.out.println("1) Get number of certificates");
@@ -103,7 +121,7 @@ public class Runner {
                     break;
                 case 7:
                     System.out.println("Exit application, Bye!");
-                    return;
+                    running = false;
                 default:
                     System.out.println("Enter a valid selction");
             }
@@ -120,10 +138,34 @@ public class Runner {
             System.out.println("1) Enter a question");
             System.out.println("2) Delete a question");
             System.out.println("3) Modify a question");
-            System.out.println("4) Get number of certificates");
-            System.out.println("5) List top 15 mistakes");
-            System.out.println("6) Practice certificate");
-            System.out.println("7) Practice anothercertificate");
+            System.out.println("4) Search up question");
+            System.out.println("5) Get number of certificates");
+            System.out.println("6) List top 15 mistakes");
+            System.out.println("7) Practice certificate");
+            System.out.println("8) Practice another certificate");
+            
+            String input = scanner.nextLine();
+            int option = Integer.parseInt(input);
+            System.out.println("Selected input: " + option);
+            
+            switch(option) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+                case 7:
+                    break;
+                default:
+                System.out.println("Enter a valid selction");
+            }
         }
     }
 }

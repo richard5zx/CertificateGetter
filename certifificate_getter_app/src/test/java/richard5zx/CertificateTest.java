@@ -22,6 +22,7 @@ public class CertificateTest {
         // Test getNumOfCert() Function
         assertTrue(Certificate.getNumOfCert(token) == 0);
     }
+    
     /**
      * Test to add and delete certificates
      */
@@ -95,7 +96,7 @@ public class CertificateTest {
         
         // Test getNumOfCert() Function
         int bug = Certificate.getNumOfCert(token);
-        System.out.println(bug);
+        SystemManager.out.println(bug);
         assertTrue(Certificate.getNumOfCert(token) == 3);
     
         // Delete rest of the certifications
