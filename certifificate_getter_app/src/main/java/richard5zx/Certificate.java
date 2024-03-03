@@ -21,7 +21,7 @@ public class Certificate {
     public static int getNumOfCert(Token token) {
 
         try {
-            DBconnection dBconnection = new DBconnection(token);
+            DBconnection dBconnection = new DBconnection();
             Connection connection = dBconnection.connect();
 
             String sql = "SELECT COUNT(*) AS numOfCert FROM public.certificates";
@@ -38,7 +38,7 @@ public class Certificate {
             return numOfCert;
             
         } catch(Exception e) {
-            SystemManager.out.println("Error in connecting to PostgreSQL server");
+            System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
 
@@ -52,7 +52,7 @@ public class Certificate {
     public static void listCertficates(Token token) {
 
         try {
-            DBconnection dBconnection = new DBconnection(token);
+            DBconnection dBconnection = new DBconnection();
             Connection connection = dBconnection.connect();
 
             Statement statement = connection.createStatement();
@@ -63,18 +63,18 @@ public class Certificate {
 
             // If list is empty then print out string saying it is full
             if (!rset.next()) {
-                SystemManager.out.println("No certificates available");
+                System.out.println("No certificates available");
             }
             // Print the data from the database
             while(rset.next()) {
                 int cert_id = rset.getInt("cert_id");
                 String cert_name = rset.getString("cert_name");
-                SystemManager.out.println(cert_id + " - " + cert_name);
+                System.out.println(cert_id + " - " + cert_name);
             }
             
             dBconnection.disconnect(connection);
         } catch (Exception e) {
-            SystemManager.out.println("Error in connecting to PostgreSQL server");
+            System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
     }
@@ -87,7 +87,7 @@ public class Certificate {
     public static void addCertficate(String cert_name, Token token) {
 
         try {
-            DBconnection dBconnection = new DBconnection(token);
+            DBconnection dBconnection = new DBconnection();
             Connection connection = dBconnection.connect();
 
             String sql = "INSERT INTO certificates (\"cert_name\")" + " VALUES('" + cert_name + "')";
@@ -95,7 +95,7 @@ public class Certificate {
             Statement statement = connection.createStatement();
             int rows = statement.executeUpdate(sql);
             if(rows > 0) {
-                 SystemManager.out.println(cert_name + " certificate added");
+                 System.out.println(cert_name + " certificate added");
             }
 
             // Add new table for question bank of the certificate
@@ -103,7 +103,7 @@ public class Certificate {
 
             dBconnection.disconnect(connection);
         } catch (SQLException e) {
-            SystemManager.out.println("Error in connecting to PostgreSQL server");
+            System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
     }
@@ -111,10 +111,10 @@ public class Certificate {
     public static void createQuestionTable(String cert_name, Token token) {
 
         try {
-            DBconnection dBconnection = new DBconnection(token);
+            DBconnection dBconnection = new DBconnection();
             Connection connection = dBconnection.connect();
 
-            SystemManager.out.println("Connected to database");
+            System.out.println("Connected to database");
             
             String sql = "CREATE TABLE IF NOT EXISTS " + cert_name + " (\n"
                  + "    CertificateID int PRIMARY KEY,\n"
@@ -129,7 +129,7 @@ public class Certificate {
 
             dBconnection.disconnect(connection);
         } catch (SQLException e) {
-            SystemManager.out.println("Error in connecting to PostgreSQL server");
+            System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
     }
@@ -142,7 +142,7 @@ public class Certificate {
     public static void deleteCertficate(String cert_name, Token token) {
 
         try {
-            DBconnection dBconnection = new DBconnection(token);
+            DBconnection dBconnection = new DBconnection();
             Connection connection = dBconnection.connect();
 
             // Drop table (question bank) from the database
@@ -154,13 +154,13 @@ public class Certificate {
             Statement statement = connection.createStatement();
             int rows = statement.executeUpdate(sql);
             if(rows > 0) {
-                SystemManager.out.println("Certificate deleted");
+                System.out.println("Certificate deleted");
             }
 
             dBconnection.disconnect(connection);
 
         } catch(SQLException e) {
-            SystemManager.out.println("Error in connecting to PostgreSQL server");
+            System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
     }
@@ -173,7 +173,7 @@ public class Certificate {
     public static void deleteCertficate(int id, Token token) {
 
         try {
-            DBconnection dBconnection = new DBconnection(token);
+            DBconnection dBconnection = new DBconnection();
             Connection connection = dBconnection.connect();
 
             // Drop table (question bank) from the database
@@ -185,13 +185,13 @@ public class Certificate {
             Statement statement = connection.createStatement();
             int rows = statement.executeUpdate(sql);
             if(rows > 0) {
-                SystemManager.out.println("Certificate deleted");
+                System.out.println("Certificate deleted");
             }
 
             dBconnection.disconnect(connection);
 
         } catch(SQLException e) {
-            SystemManager.out.println("Error in connecting to PostgreSQL server");
+            System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
     }
@@ -204,19 +204,19 @@ public class Certificate {
     public static void deleteQuestionTable(String cert_name, Token token) {
         
         try {
-            DBconnection dBconnection = new DBconnection(token);
+            DBconnection dBconnection = new DBconnection();
             Connection connection = dBconnection.connect();
 
-            SystemManager.out.println(cert_name);
+            System.out.println(cert_name);
             String sql = "DROP TABLE " + cert_name + ";";
             Statement statement = connection.createStatement();
 
             statement.executeUpdate(sql);
 
             dBconnection.disconnect(connection);
-            SystemManager.out.println("Table Dropped");
+            System.out.println("Table Dropped");
         } catch (SQLException e) {
-            SystemManager.out.println("Error in connecting to PostgreSQL server");
+            System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
     }
@@ -233,19 +233,19 @@ public class Certificate {
         
         // Drop the table with the name queried above
         try {
-            DBconnection dBconnection = new DBconnection(token);
+            DBconnection dBconnection = new DBconnection();
             Connection connection = dBconnection.connect();
 
-            SystemManager.out.println(cert_name);
+            System.out.println(cert_name);
             String sql = "DROP TABLE " + cert_name + ";";
             Statement statement = connection.createStatement();
 
             statement.executeUpdate(sql);
 
             dBconnection.disconnect(connection);
-            SystemManager.out.println("Table Dropped");
+            System.out.println("Table Dropped");
         } catch (SQLException e) {
-            SystemManager.out.println("Error in connecting to PostgreSQL server");
+            System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
     }
@@ -259,7 +259,7 @@ public class Certificate {
 
         // Drop the table with name queried
         try {
-            DBconnection dBconnection = new DBconnection(token);
+            DBconnection dBconnection = new DBconnection();
             Connection connection = dBconnection.connect();
 
             Statement statement = connection.createStatement();
@@ -276,7 +276,7 @@ public class Certificate {
             dBconnection.disconnect(connection);
 
         } catch (SQLException e) {
-            SystemManager.out.println("Error in connecting to PostgreSQL server");
+            System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
 
@@ -291,7 +291,7 @@ public class Certificate {
     public static void deleteAllCertificates(Token token) {
         
         try {
-            DBconnection dBconnection = new DBconnection(token);
+            DBconnection dBconnection = new DBconnection();
             Connection connection = dBconnection.connect();
             
             Statement statement = connection.createStatement();
@@ -310,11 +310,11 @@ public class Certificate {
             sql = "TRUNCATE TABLE certificates;";
             statement.execute(sql);
 
-            SystemManager.out.println("All certificates deleteed");
+            System.out.println("All certificates deleteed");
             
             dBconnection.disconnect(connection);
         } catch (SQLException e) {
-            SystemManager.out.println("Error in connecting to PostgreSQL server");
+            System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
     }

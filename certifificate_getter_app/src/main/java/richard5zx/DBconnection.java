@@ -3,23 +3,17 @@ package richard5zx;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DBconnection {
+public final class DBconnection {
     // Atributes
-    private Token token;
-
-    // Constuctor
-    public DBconnection(Token token) {
-        this.token = token;
-    }
+    final private String jdbcURL = "jdbc:postgresql://localhost:5432/certificates";
+    final private String db_username = "postgres";
+    final private String db_password = "111";
 
     // Methods
     public Connection connect() {
-        String jdbcURL = token.getJdbcURL();
-        String username = token.getUsername();
-        String password = token.getPassword();
 
         try {
-            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+            Connection connection = DriverManager.getConnection(jdbcURL, db_username, db_password);
             return connection;
         } catch(Exception e) {
             System.out.println("Error in connecting to server");

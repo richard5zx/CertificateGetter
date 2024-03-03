@@ -18,7 +18,7 @@ public class Runner {
 
             String input = scanner.nextLine();
             int choice = Integer.parseInt(input);
-
+            
             switch(choice) {
                 case 1:
                     System.out.print("Enter password: ");

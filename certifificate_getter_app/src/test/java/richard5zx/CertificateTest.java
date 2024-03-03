@@ -96,7 +96,7 @@ public class CertificateTest {
         
         // Test getNumOfCert() Function
         int bug = Certificate.getNumOfCert(token);
-        SystemManager.out.println(bug);
+        System.out.println(bug);
         assertTrue(Certificate.getNumOfCert(token) == 3);
     
         // Delete rest of the certifications
