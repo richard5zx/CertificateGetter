@@ -11,26 +11,42 @@ public class AuthenticationTest {
      */
     @Test
     public void validPassword() {
-        // The correct password
+        
+        // Test a successful registration and authentication
+        String username = "111";
         String password = "111";
 
-        Authentication authenticator = new Authentication(password);
-        Token token = authenticator.authenticate();
+        SystemManagerDAO.registerUser(username, password);
 
-        assertTrue(token.getValidity());
+        Authentication authenticator = new Authentication(username, password);
+
+        assertTrue(authenticator.getValidity());
+
+        // Test a successful registration and authentication
+        String username2 = "asdasd1321";
+        String password2 = "243242";
+
+        SystemManagerDAO.registerUser(username, password);
+
+        Authentication authenticator2 = new Authentication(username2, password2);
+
+        assertTrue(authenticator2.getValidity());
+
+        SystemManagerDAO.deleteAllUsers();
     }
 
     /**
-     * Test a valid password;
+     * Test a invalid user;
      */
     @Test
     public void invalidPassword() {
-        // The correct password
-        String password = "123";
+        // Test an unsuccessful registration and authentication
+        
+        String username3 = "asdasd1321";
+        String password3 = "243242";
 
-        Authentication authenticator = new Authentication(password);
-        Token token = authenticator.authenticate();
+        Authentication authenticator3 = new Authentication(username3, password3);
 
-        assertFalse(token.getValidity());
+        assertFalse(authenticator3.getValidity());
     }
 }

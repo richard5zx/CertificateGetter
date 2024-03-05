@@ -10,6 +10,7 @@ public class Token {
         this.validity = valid;
     }
 
+    // Getter
     public boolean getValidity() {
         return this.validity;
     }
