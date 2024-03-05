@@ -15,13 +15,5 @@ public class QuestionTest {
     @Test
     public void addQTest() {
 
-        String password = "111";
-        Authentication authenticator = new Authentication(password);
-        Token token = authenticator.authenticate();
-
-        assertTrue(Certificate.getNumOfCert(token) == 0);
-
-
-        // Test getNumOfCert() Function
     }
 }

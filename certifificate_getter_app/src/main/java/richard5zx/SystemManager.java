@@ -2,6 +2,7 @@ package richard5zx;
 
 public class SystemManager {
 
+    // ------------------- User DAO -------------------
     public static boolean registerUser(String username, String password) {
         
         // Check if the user is registered in database
@@ -14,5 +15,12 @@ public class SystemManager {
         } else {
             return false;
         }
+    }
+    // ------------------- Certificate DAO -------------------
+    public static int getNumOfCert() {
+        
+        int num_of_cert = SystemManagerDAO.getNumOfCert();
+        return num_of_cert;
+
     }
 }

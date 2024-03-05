@@ -8,9 +8,12 @@ Blog
 
     To do:
         - Refactor the Certificates
+        - Start by:
+            1) User DAO test deleted repeated users
+            2) list certificate: return a dictionary or something instead of just printing
 
     Thoughts:
-        - 
+        - I need to think about linking the tables that are created together
 
 03/03/24
     Achievements:
