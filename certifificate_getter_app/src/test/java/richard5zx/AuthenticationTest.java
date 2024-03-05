@@ -18,15 +18,15 @@ public class AuthenticationTest {
 
         SystemManagerDAO.registerUser(username, password);
 
-        Authentication authenticator = new Authentication(username, password);
+        Authentication authenticator1 = new Authentication(username, password);
 
-        assertTrue(authenticator.getValidity());
+        assertTrue(authenticator1.getValidity());
 
         // Test a successful registration and authentication
         String username2 = "asdasd1321";
         String password2 = "243242";
 
-        SystemManagerDAO.registerUser(username, password);
+        SystemManagerDAO.registerUser(username2, password2);
 
         Authentication authenticator2 = new Authentication(username2, password2);
 
@@ -41,7 +41,7 @@ public class AuthenticationTest {
     @Test
     public void invalidPassword() {
         // Test an unsuccessful registration and authentication
-        
+
         String username3 = "asdasd1321";
         String password3 = "243242";
 

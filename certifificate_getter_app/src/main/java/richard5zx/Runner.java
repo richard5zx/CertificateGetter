@@ -11,9 +11,10 @@ public class Runner {
         boolean running = true;
         while(running) {
             System.out.println("Select number of below options:");
-            System.out.println("\t1) Login (Enter 1)");
-            System.out.println("\t2) Register account");
-            System.out.println("\t3) Exit application (Enter any key)");
+            System.out.println("\t1) Login ");
+            System.out.println("\t2) Register user");
+            System.out.println("\t3) Delete user");
+            System.out.println("\t4) Exit application (Enter any other key)");
             System.out.print("Input: ");
 
             String input = scanner.nextLine();
@@ -21,19 +22,21 @@ public class Runner {
             
             switch(choice) {
                 case 1:
+                    System.out.print("Enter username: ");
+                    String userLogin = scanner.nextLine();
                     System.out.print("Enter password: ");
-                    String dbpassword = scanner.nextLine();
-                    Authentication authenticator = new Authentication(dbpassword);
+                    String passwordLogin = scanner.nextLine();
 
-                    Token token = authenticator.authenticate();
-                    boolean validity = token.getValidity();
+                    Authentication authenticator = new Authentication(userLogin, passwordLogin);
+                    boolean validity = authenticator.getValidity();
+    
                     if (!validity) {
                         System.out.println("Password is incorrect"); 
                         System.out.println();
                     } else  {
                         System.out.println("Password is correct");
                         System.out.println();
-                        runCertMenu(scanner, token);
+                        runCertMenu(scanner);
                     }
                     break;
 
@@ -52,7 +55,16 @@ public class Runner {
                         System.out.println("Account already exists, enter your account in login menu");
                     }
                     break;
-
+                case 3:
+                    System.out.print("Enter username to delete: ");
+                    String user_to_del = scanner.nextLine();
+                    boolean deleted = SystemManagerDAO.deleteUser(user_to_del);
+                    if(deleted) {
+                        System.out.println("User deleted");
+                    } else {
+                        System.out.println("No user exists or wrong username entered");
+                    }
+                    break;
                 default:
                     System.out.println();
                     System.out.println("Auf Wiedersehen :)");
@@ -61,7 +73,7 @@ public class Runner {
         }
     }
 
-    public static void runCertMenu(Scanner scanner, Token token) {
+    public static void runCertMenu(Scanner scanner) {
         
         boolean running = true;
         while(running) {

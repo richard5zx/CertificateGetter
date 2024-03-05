@@ -1,4 +1,17 @@
 Blog
+
+05/03/24
+    Achievements:
+        - Rewriten the authentication system by adding system for registering users
+        - Wrote test for the authentication
+        - Finish implementation of authentication
+
+    To do:
+        - Refactor the Certificates
+
+    Thoughts:
+        - 
+
 03/03/24
     Achievements:
         - Created PostgreSQL table that automatically adds date
