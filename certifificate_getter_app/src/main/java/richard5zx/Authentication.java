@@ -3,12 +3,11 @@ package richard5zx;
 public class Authentication {
     
     // Attribute
-    final String dbPassword = "111";
-    private String enteredPassword;
+    Token token;
 
     // Constructor
-    public Authentication(String password) {
-        this.enteredPassword = password;
+    public Authentication(String username, String password) {
+        this.token = authenticate(username, password);
     }
 
     // Method
@@ -16,15 +15,15 @@ public class Authentication {
     * Authenticates password
     * @return Token
     */
-    public Token authenticate() {
-        boolean validity;
-        if(enteredPassword.equals(this.correctPassword)) {
-            validity = true;
+    public Token authenticate(String username, String password) {
+        
+        boolean valid = AuthenticationDAO.authenticateUser(username, password);
+        
+        if(valid) {
+            return new Token(valid);
         } else {
-            validity = false;
+            return new Token(valid);
         }
-
-        return new Token(correctPassword, validity);
     }
 
     /**
@@ -32,7 +31,7 @@ public class Authentication {
     * @param Scanner
     * @return String
     */
-    public String getPassword() {
-        return this.correctPassword;
+    public boolean getValidity() {
+        return token.getValidity();
     }
 }
