@@ -34,9 +34,11 @@ public class Runner {
                         System.out.println("Password is incorrect"); 
                         System.out.println();
                     } else  {
+                        User user = new User(userLogin);
                         System.out.println("Password is correct");
                         System.out.println();
-                        runCertMenu(scanner);
+                        System.out.println("Loging in........");
+                        runCertMenu(scanner, user);
                     }
                     break;
 
@@ -73,7 +75,7 @@ public class Runner {
         }
     }
 
-    public static void runCertMenu(Scanner scanner) {
+    public static void runCertMenu(Scanner scanner, User user) {
         
         boolean running = true;
         while(running) {
@@ -97,17 +99,18 @@ public class Runner {
             switch(option) {
                 case 1:
                     System.out.println("Get num of certificates selected");
-                    System.out.println("Number of Certificates: " + Certificate.getNumOfCert(token));
+                    int num_of_cert = user.getNumOfCert();
+                    System.out.println("Number of Certificates: " + num_of_cert);
                     break;
                 case 2:
                     System.out.println("List certificates selected");
-                    Certificate.listCertficates(token);
+                    user.listCert();
                     break;
                 case 3:
                     System.out.println("Add certificates selected");
                     System.out.print("Enter name of new certificate: ");
                     String cert_name = scanner.nextLine();
-                    Certificate.addCertficate(cert_name, token);
+                    user.addCert(cert_name);
                     break;
                 case 4:
                     System.out.println("Delete certificate selected");
@@ -117,19 +120,19 @@ public class Runner {
                     
                     if (HelperFunction.isNumeric(cert)) {
                         int id = Integer.parseInt(cert);
-                        Certificate.deleteCertficate(id, token);
+                        user.deleteCert(id);
                     } else {
-                        Certificate.deleteCertficate(input, token);
+                        user.deleteCert(input);
                     }
                     break;
                 case 5:
                     System.out.println("Delete all certificates selected");
-                    Certificate.deleteAllCertificates(token);
+                    user.deleteAllCert();
                     break;
                 case 6:
                     System.out.print("Select certificate to practice: ");
                     String certName = scanner.nextLine();
-                    runQuestionMenu(scanner, certName, token);
+                    runQuestionMenu(scanner, certName);
                     break;
                 case 7:
                     System.out.println("Exit application, Bye!");
@@ -143,7 +146,7 @@ public class Runner {
         scanner.close();
     }
 
-    public static void runQuestionMenu(Scanner scanner, String cert, Token token) {
+    public static void runQuestionMenu(Scanner scanner, String cert) {
         
         boolean runningMenu = true;
         while (runningMenu) {

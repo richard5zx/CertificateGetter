@@ -1,5 +1,10 @@
 Blog
 
+08/03/24
+    Achievements:
+    To do:
+    Thoughts:
+
 05/03/24
     Achievements:
         - Rewriten the authentication system by adding system for registering users
@@ -9,8 +14,10 @@ Blog
     To do:
         - Refactor the Certificates
         - Start by:
-            1) User DAO test deleted repeated users
-            2) list certificate: return a dictionary or something instead of just printing
+            1) add the certificate dao functions to user
+            2) User DAO test deleted repeated users
+            3) list certificate: return a dictionary or something instead of just printing
+
 
     Thoughts:
         - I need to think about linking the tables that are created together

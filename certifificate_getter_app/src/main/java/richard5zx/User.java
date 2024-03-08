@@ -5,21 +5,28 @@ import java.util.List;
 public class User {
     // Attributes
     String username;
-    String password;
-    List<Certificate> certificates;
+    // List<Certificate> certificates;
 
     // Constructor
-    public User () {
-
+    public User (String username) {
+        this.username = username;
     }
 
     // Methods
-    public void createCert() {
-
+    public void addCert(String cert_name) {
+        UserDAO.addCert(cert_name);
     }
 
-    public void deleteCert() {
+    public void deleteCert(int username) {
+        UserDAO.deleteCert(username);
+    }
 
+    public void deleteCert(String username) {
+        UserDAO.deleteCert(username);
+    }
+
+    public void deleteAllCert() {
+        UserDAO.deleteAllCert();
     }
 
     public void modifyCert() {
@@ -27,14 +34,10 @@ public class User {
     }
 
     public int getNumOfCert() {
-        return 1;
+        return UserDAO.getNumOfCert();
     }
 
-    public List<Certificate> getListOfCert() {
+    public List<Certificate> listCert() {
         return null;
-    }
-
-    public void selectCertificate() {
-
     }
 }
