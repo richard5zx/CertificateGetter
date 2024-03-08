@@ -31,7 +31,7 @@ public class Runner {
                     boolean validity = authenticator.getValidity();
     
                     if (!validity) {
-                        System.out.println("Password is incorrect"); 
+                        System.out.println("Password is incorrect or user does not exist"); 
                         System.out.println();
                     } else  {
                         User user = new User(userLogin);
@@ -73,6 +73,7 @@ public class Runner {
                     return;
             }
         }
+        scanner.close();
     }
 
     public static void runCertMenu(Scanner scanner, User user) {

@@ -14,6 +14,6 @@ public class QuestionTest {
      */
     @Test
     public void addQTest() {
-
+        assertTrue(false);
     }
 }

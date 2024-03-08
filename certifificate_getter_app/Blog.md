@@ -2,8 +2,17 @@ Blog
 
 08/03/24
     Achievements:
+        - More refactoring done
+
     To do:
+        - User DAO test deleted repeated users
+        - list certificate: return a dictionary or something instead of just printing
+        - delete user should return name of user
+
     Thoughts:
+        -   I want to make a function that can take screen shots of questions
+        -   I want to read questions from screen shots
+        -   I want to compare screen shots
 
 05/03/24
     Achievements:
