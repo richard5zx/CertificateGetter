@@ -104,19 +104,22 @@ public class Runner {
                     System.out.println("Get num of certificates selected");
                     int num_of_cert = user.getNumOfCert();
                     System.out.println("Number of Certificates: " + num_of_cert);
+                    System.out.println();
                     break;
                 case 2:
                     System.out.println("List certificates selected");
                     List<Certificate> certs = user.getCert();
                     for(Certificate cert : certs) {
-                        System.out.println("id: " + cert.get_cert_id() + "\tcertificate: " + cert.get_cert_name());
+                        System.out.println("\tCertificate Id: " + cert.get_cert_id() + ", Certificate: " + cert.get_cert_name());
                     }
+                    System.out.println();
                     break;
                 case 3:
                     System.out.println("Add certificates selected");
                     System.out.print("Enter name of new certificate: ");
                     String cert_name = scanner.nextLine();
                     user.addCert(cert_name);
+            
                     break;
                 case 4:
                     System.out.println("Delete certificate selected");
@@ -149,8 +152,6 @@ public class Runner {
         }
 
         System.out.println();
-        scanner.close();
-    }
 
     public static void runQuestionMenu(Scanner scanner, String cert) {
         

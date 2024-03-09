@@ -3,13 +3,14 @@ Blog
 09/03/24
     Achievements:
         - Wrote test for repeated users
-        
+        - found another bug there was two close scanners. there should only be one
     To do:
         - Something wrong with my getCert function
         - bug fixed
-        
-    Thoughts:
+        - delete user should return name of user, could do the same for add user
 
+    Thoughts:
+        - Want an encryption method for my password
 
 08/03/24
     Achievements:
