@@ -301,16 +301,24 @@ public class UserDAO {
             ResultSet rset = statement.executeQuery(sql);
 
             // If list is empty then print out string saying it is full
-            if (!rset.next()) {
+            boolean next = rset.next();
+            if (!next) {
                 System.out.println("No certificates available");
-            }
-            // Print the data from the database
-            while(rset.next()) {
+            } else {
+                // Need to repeat twice becasue the first next checks the first row and it below it starts from the second row
                 int cert_id = rset.getInt("cert_id");
                 String cert_name = rset.getString("cert_name");
-                
                 Certificate cert = new Certificate(cert_id, cert_name);
-                certs.add(cert); 
+                certs.add(cert);
+
+                while(rset.next()) { 
+                    cert_id = rset.getInt("cert_id");
+                    cert_name = rset.getString("cert_name");
+                    cert = new Certificate(cert_id, cert_name);
+                    certs.add(cert); 
+                }
+                
+
             }
             
             dBconnection.disconnect(connection);

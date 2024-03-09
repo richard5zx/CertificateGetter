@@ -6,7 +6,8 @@ Blog
         
     To do:
         - Something wrong with my getCert function
-
+        - bug fixed
+        
     Thoughts:
 
 

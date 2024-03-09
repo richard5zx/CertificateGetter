@@ -35,13 +35,21 @@ public class UserTest {
         correct_list.add("sc900");
         correct_list.add("ai900");
 
+        int num_of_cert = 0;
+        for(Certificate cert : test_list) {
+            if(correct_list.contains(cert.get_cert_name())) {
+                num_of_cert++;
+            }
+        }
+        assertTrue(num_of_cert == 6);
+
         int matches = 0;
         for(Certificate cert : test_list) {
             if(correct_list.contains(cert.get_cert_name())) {
                 matches++;
             }
         }
-        assertTrue(matches == 0);
+        assertTrue(matches == 6);
         user.deleteAllCert();
     }
 
@@ -50,6 +58,7 @@ public class UserTest {
      */
     @Test
     public void getNumOfCertTest() {
+
         User user = new User("user1");
         assertTrue(user.getNumOfCert() == 0);
     }
