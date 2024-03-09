@@ -73,6 +73,7 @@ public class Runner {
                     return;
             }
         }
+        
         scanner.close();
     }
 

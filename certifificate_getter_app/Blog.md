@@ -1,5 +1,15 @@
 Blog
 
+09/03/24
+    Achievements:
+        - Wrote test for repeated users
+        - 
+    To do:
+        - 
+
+    Thoughts:
+
+
 08/03/24
     Achievements:
         - More refactoring done

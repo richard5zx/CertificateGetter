@@ -38,6 +38,6 @@ public class User {
     }
 
     public List<Certificate> listCert() {
-        return null;
+        return UserDAO.getCert();
     }
 }

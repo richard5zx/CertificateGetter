@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class SystemManagerDAO {
     
-    // ------------------- User DAO -------------------
+    // Methods
     public static boolean isRegistered(String username, String password) {
         try {
             DBconnection dBconnection = new DBconnection();
@@ -120,42 +120,4 @@ public class SystemManagerDAO {
         }
         return 0;
     }
-
-    // ------------------- Certificate DAO -------------------
-
-    /**
-     * @param Scanner
-     * @return prints out the certificates id and name of certificate
-     */
-    public static void listCertficates() {
-
-        try {
-            DBconnection dBconnection = new DBconnection();
-            Connection connection = dBconnection.connect();
-
-            Statement statement = connection.createStatement();
-
-            // Execute query and return result to rset
-            String sql = "SELECT * FROM certificates";
-            ResultSet rset = statement.executeQuery(sql);
-
-            // If list is empty then print out string saying it is full
-            if (!rset.next()) {
-                System.out.println("No certificates available");
-            }
-            // Print the data from the database
-            while(rset.next()) {
-                int cert_id = rset.getInt("cert_id");
-                String cert_name = rset.getString("cert_name");
-                System.out.println(cert_id + " - " + cert_name);
-            }
-            
-            dBconnection.disconnect(connection);
-        } catch (Exception e) {
-            System.out.println("Error in connecting to PostgreSQL server");
-            e.printStackTrace();
-        }
-    }
-
-
 }

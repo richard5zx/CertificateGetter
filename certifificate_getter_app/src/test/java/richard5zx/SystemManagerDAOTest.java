@@ -14,8 +14,13 @@ public class SystemManagerDAOTest {
      */
     @Test
     public void registeringReapeatedUserTest() {
-        // Add users
-        // Todo
+        SystemManagerDAO.registerUser("user1", "password");
+        assertTrue(SystemManagerDAO.getNumOfUser() == 1);
+
+        SystemManagerDAO.registerUser("user1", "password");
+        assertTrue(SystemManagerDAO.getNumOfUser() == 1);
+
+        SystemManagerDAO.deleteAllUsers();
     }
     
     /**

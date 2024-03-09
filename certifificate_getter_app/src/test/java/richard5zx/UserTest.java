@@ -6,6 +6,17 @@ import org.junit.Test;
 
 public class UserTest {
 
+
+    /**
+     * Check no certificates before adding anything
+     */
+    @Test
+    public void getCertsTest() {
+        User user = new User("user1");
+        
+        assertTrue(user.getNumOfCert() == 0);
+    }
+
     /**
      * Check no certificates before adding anything
      */

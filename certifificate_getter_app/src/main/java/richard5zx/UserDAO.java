@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDAO {
 
@@ -278,5 +280,45 @@ public class UserDAO {
         }
 
         return -1;
+    }
+
+    /**
+     * @param Scanner
+     * @return prints out the certificates id and name of certificate
+     */
+    public static List<Certificate> getCert() {
+        
+        List<Certificate> certs = new ArrayList<>();
+        
+        try {
+            DBconnection dBconnection = new DBconnection();
+            Connection connection = dBconnection.connect();
+
+            Statement statement = connection.createStatement();
+
+            // Execute query and return result to rset
+            String sql = "SELECT * FROM certificates";
+            ResultSet rset = statement.executeQuery(sql);
+
+            // If list is empty then print out string saying it is full
+            if (!rset.next()) {
+                System.out.println("No certificates available");
+            }
+            // Print the data from the database
+            while(rset.next()) {
+                int cert_id = rset.getInt("cert_id");
+                String cert_name = rset.getString("cert_name");
+                
+                Certificate cert = new Certificate(cert_id, cert_name);
+                certs.add(cert); 
+            }
+            
+            dBconnection.disconnect(connection);
+        } catch (Exception e) {
+            System.out.println("Error in connecting to PostgreSQL server");
+            e.printStackTrace();
+        }
+
+        return certs;
     }
 }
