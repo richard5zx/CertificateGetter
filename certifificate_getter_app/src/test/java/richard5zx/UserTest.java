@@ -2,6 +2,9 @@ package richard5zx;
 
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 public class UserTest {
@@ -13,8 +16,33 @@ public class UserTest {
     @Test
     public void getCertsTest() {
         User user = new User("user1");
-        
-        assertTrue(user.getNumOfCert() == 0);
+
+        user.addCert("javaEE");
+        user.addCert("javaocp");
+        user.addCert("dp900");
+        user.addCert("az900");
+        user.addCert("sc900");
+        user.addCert("ai900");
+
+        List<Certificate> test_list = user.getCert();
+        assertTrue(user.getNumOfCert() == 6);
+
+        List<String> correct_list = new ArrayList<>();
+        correct_list.add("javaocp");
+        correct_list.add("javaEE");
+        correct_list.add("dp900");
+        correct_list.add("az900");
+        correct_list.add("sc900");
+        correct_list.add("ai900");
+
+        int matches = 0;
+        for(Certificate cert : test_list) {
+            if(correct_list.contains(cert.get_cert_name())) {
+                matches++;
+            }
+        }
+        assertTrue(matches == 0);
+        user.deleteAllCert();
     }
 
     /**

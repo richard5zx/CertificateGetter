@@ -29,15 +29,11 @@ public class User {
         UserDAO.deleteAllCert();
     }
 
-    public void modifyCert() {
-
-    }
-
     public int getNumOfCert() {
         return UserDAO.getNumOfCert();
     }
 
-    public List<Certificate> listCert() {
+    public List<Certificate> getCert() {
         return UserDAO.getCert();
     }
 }

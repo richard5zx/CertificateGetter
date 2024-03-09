@@ -1,5 +1,6 @@
 package richard5zx;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Runner {
@@ -73,7 +74,7 @@ public class Runner {
                     return;
             }
         }
-        
+
         scanner.close();
     }
 
@@ -106,7 +107,10 @@ public class Runner {
                     break;
                 case 2:
                     System.out.println("List certificates selected");
-                    user.listCert();
+                    List<Certificate> certs = user.getCert();
+                    for(Certificate cert : certs) {
+                        System.out.println("id: " + cert.get_cert_id() + "\tcertificate: " + cert.get_cert_name());
+                    }
                     break;
                 case 3:
                     System.out.println("Add certificates selected");
