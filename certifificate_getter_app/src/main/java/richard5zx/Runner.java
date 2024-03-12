@@ -91,7 +91,7 @@ public class Runner {
             System.out.println("4) Delete existing Certificates");
             System.out.println("5) Delete all certificates");
             System.out.println("6) Select certificate");
-            System.out.println("7) Exit application");
+            System.out.println("7) Logout");
             System.out.println();
             System.out.print("Option: ");
 
@@ -129,10 +129,13 @@ public class Runner {
                     
                     if (HelperFunction.isNumeric(cert)) {
                         int id = Integer.parseInt(cert);
-                        user.deleteCert(id);
+                        int cert_id = user.deleteCert(id);
+                        System.out.println("Certificate ID: " + cert_id + " is deleted");
                     } else {
-                        user.deleteCert(input);
+                        String certificate_name = user.deleteCert(input);
+                        System.out.println("Certificate: " + certificate_name + " is deleted");
                     }
+                    System.out.println();
                     break;
                 case 5:
                     System.out.println("Delete all certificates selected");
@@ -152,6 +155,7 @@ public class Runner {
         }
 
         System.out.println();
+    }
 
     public static void runQuestionMenu(Scanner scanner, String cert) {
         
@@ -165,6 +169,8 @@ public class Runner {
             System.out.println("6) List top 15 mistakes");
             System.out.println("7) Practice certificate");
             System.out.println("8) Practice another certificate");
+            System.out.println();
+            System.out.println("Option: ");
             
             String input = scanner.nextLine();
             int option = Integer.parseInt(input);
@@ -184,6 +190,10 @@ public class Runner {
                 case 6:
                     break;
                 case 7:
+                    break;
+                case 8:
+                    System.out.println("Exit certificate, Bye!");
+                    runningMenu = false;
                     break;
                 default:
                 System.out.println("Enter a valid selction");

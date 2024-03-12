@@ -14,7 +14,7 @@ public class UserDAO {
      * @param String cert_name
      * @return void
      */
-    public static void addCert(String cert_name) {
+    public static String addCert(String cert_name) {
 
         try {
             DBconnection dBconnection = new DBconnection();
@@ -32,10 +32,13 @@ public class UserDAO {
             createQuestionTable(cert_name);
 
             dBconnection.disconnect(connection);
+            return cert_name;
+
         } catch (SQLException e) {
             System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
+        return null;
     }
 
     /**
@@ -74,7 +77,7 @@ public class UserDAO {
      * @param Scanner 
      * @return void
      */
-    public static void deleteCert(String cert_name) {
+    public static String deleteCert(String cert_name) {
 
         try {
             DBconnection dBconnection = new DBconnection();
@@ -93,11 +96,14 @@ public class UserDAO {
             }
 
             dBconnection.disconnect(connection);
-
+            
+            return cert_name;
         } catch(SQLException e) {
             System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
+
+        return null;
     }
 
         /**
@@ -105,7 +111,7 @@ public class UserDAO {
      * @param Scanner 
      * @return void
      */
-    public static void deleteCert(int id) {
+    public static int deleteCert(int id) {
 
         try {
             DBconnection dBconnection = new DBconnection();
@@ -124,11 +130,12 @@ public class UserDAO {
             }
 
             dBconnection.disconnect(connection);
-
+            return id;
         } catch(SQLException e) {
             System.out.println("Error in connecting to PostgreSQL server");
             e.printStackTrace();
         }
+        return -1;
     }
 
     /**

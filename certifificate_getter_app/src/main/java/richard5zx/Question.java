@@ -9,8 +9,8 @@ public class Question {
     int qID;
     String question;
     List<String> answers;
-    int mistakes;
-    // Date added
+    int correct_answer_index;
+    int mistakes_made;
     
 
     // Constructor

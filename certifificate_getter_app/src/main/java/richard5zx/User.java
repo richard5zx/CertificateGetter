@@ -13,16 +13,16 @@ public class User {
     }
 
     // Methods
-    public void addCert(String cert_name) {
-        UserDAO.addCert(cert_name);
+    public String addCert(String cert_name) {
+        return UserDAO.addCert(cert_name);
     }
 
-    public void deleteCert(int username) {
-        UserDAO.deleteCert(username);
+    public int deleteCert(int username) {
+        return UserDAO.deleteCert(username);
     }
 
-    public void deleteCert(String username) {
-        UserDAO.deleteCert(username);
+    public String deleteCert(String username) {
+        return UserDAO.deleteCert(username);
     }
 
     public void deleteAllCert() {
